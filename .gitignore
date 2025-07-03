@@ -108,3 +108,20 @@ jspm_packages/
 
 # Vector database
 qdrant_storage/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+backend/venv/
+backend/env/
+
+# Python virtual environment files
+pyvenv.cfg
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# pytest cache
+.pytest_cache/

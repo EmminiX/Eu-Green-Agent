@@ -1,0 +1,43 @@
+# Docker Compose overrides for cleaner output and Apple Silicon compatibility
+services:
+  # Apply logging configuration to all services
+  postgres:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  backend:
+    build:
+      args:
+        BUILDKIT_PROGRESS: plain
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  frontend:
+    build:
+      args:
+        BUILDKIT_PROGRESS: plain
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nginx:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

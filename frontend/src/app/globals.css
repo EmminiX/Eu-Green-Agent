@@ -1,0 +1,79 @@
+/* All @import statements must come first */
+@import "tailwindcss";
+
+/* Font imports - moved to head section in layout.tsx instead of here to avoid CSS import order issues */
+
+/* Prevent font loading flashes and layout shifts */
+html {
+  font-family: var(--font-lexend), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', system-ui, sans-serif;
+}
+
+/* OpenDyslexic font faces - using better CDN source */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-family: var(--font-lexend), 'Lexend', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', system-ui, sans-serif;
+  --font-size-base: 16px;
+  
+  /* Color variables for moving border */
+  --green-500: #22c55e;
+  --sky-500: #0ea5e9;
+  --cyan-400: #22d3ee;
+  --blue-400: #60a5fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  transition: font-size 0.3s ease;
+}
+
+/* Accessibility improvements */
+*, *::before, *::after {
+  font-family: var(--font-family);
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* High contrast focus indicators */
+*:focus {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
+/* Improved button focus for accessibility */
+button:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
