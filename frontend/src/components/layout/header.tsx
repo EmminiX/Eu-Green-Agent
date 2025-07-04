@@ -59,7 +59,7 @@ export const Header = () => {
             asChild
             className="text-white hover:text-green-300 hover:bg-white/10"
           >
-            <Link href="https://github.com/emmix" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/EmminiX/Eu-Green-Agent/tree/main" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
             </Link>
           </Button>
