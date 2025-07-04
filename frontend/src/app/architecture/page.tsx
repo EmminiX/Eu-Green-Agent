@@ -21,7 +21,7 @@ export default function ArchitecturePage() {
               </span>
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Understanding the unified AI architecture with local Whisper and RAG capabilities powering the EU Green Policies Chatbot
+              Understanding the Verdana AI agent architecture with PostgreSQL vector storage, OpenAI embeddings, and web verification powering the EU Green Policies Chatbot
             </p>
           </div>
 
@@ -32,30 +32,31 @@ export default function ArchitecturePage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 <Brain className="h-8 w-8 text-green-400 mr-3" />
-                Unified AI Architecture Overview
+                Verdana AI Agent Architecture Overview
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-6">
-                Our system uses a streamlined unified architecture combining RAG (Retrieval Augmented Generation), web verification, 
-                and local Whisper speech processing to deliver accurate, multi-modal interactions about EU Green Deal policies.
+                Our system uses Verdana, an intelligent AI agent that combines query classification, automatic language detection, 
+                PostgreSQL vector search, real-time web verification, and OpenAI Whisper speech processing to deliver accurate, 
+                context-aware responses about EU Green Deal policies.
               </p>
               
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-green-500/20 rounded-lg p-6">
                   <h3 className="text-xl font-semibold text-green-300 mb-3">PostgreSQL + pgvector</h3>
                   <p className="text-white/70 text-lg">
-                    High-performance vector database storing 1536-dimensional embeddings of 26+ official EU policy documents for semantic search.
+                    High-performance vector database storing 3072-dimensional OpenAI embeddings of 24+ official EU policy documents for semantic search.
                   </p>
                 </div>
                 <div className="bg-blue-500/20 rounded-lg p-6">
                   <h3 className="text-xl font-semibold text-blue-300 mb-3">OpenAI Integration</h3>
                   <p className="text-white/70 text-lg">
-                    Uses GPT-4o-mini for response generation, text-embedding-3-small for vectorization, and Whisper for local speech-to-text.
+                    Uses GPT-4 for response generation, text-embedding-3-large for vectorization, and Whisper API for speech-to-text processing.
                   </p>
                 </div>
                 <div className="bg-purple-500/20 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-purple-300 mb-3">Unified Chat Agent</h3>
+                  <h3 className="text-xl font-semibold text-purple-300 mb-3">Verdana AI Agent</h3>
                   <p className="text-white/70 text-lg">
-                    Single intelligent agent orchestrates RAG retrieval, web verification, and response generation in a streamlined workflow.
+                    Intelligent agent with query classification, language detection, conversation context, and proactive web search capabilities.
                   </p>
                 </div>
               </div>
@@ -68,8 +69,8 @@ export default function ArchitecturePage() {
                 Comprehensive Knowledge Base
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-6">
-                Our system contains 26+ official EU policy documents, processed into searchable chunks with vector embeddings 
-                for precise semantic retrieval of relevant policy information.
+                Our system contains 24+ official EU policy documents, processed into 800-token chunks with 300-token overlap, 
+                embedded using OpenAI text-embedding-3-large for precise semantic retrieval of relevant policy information.
               </p>
               
               <div className="grid md:grid-cols-3 gap-6">
@@ -88,7 +89,7 @@ export default function ArchitecturePage() {
                     <h3 className="text-lg font-semibold text-blue-300">Vector Search</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Uses cosine similarity on 1536-dimensional embeddings to find the most relevant policy content for each query.
+                    Uses cosine similarity on 3072-dimensional embeddings with 0.3 threshold to find the most relevant policy content for each query.
                   </p>
                 </div>
                 <div className="bg-purple-500/20 rounded-lg p-6">
@@ -108,31 +109,31 @@ export default function ArchitecturePage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 <Activity className="h-8 w-8 text-purple-400 mr-3" />
-                Unified Processing Workflow
+                Verdana Agent Processing Workflow
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-8">
-                Our streamlined unified agent handles the complete interaction lifecycle, from speech input to final response, 
-                with automatic verification and real-time web source checking for maximum accuracy.
+                Verdana handles the complete interaction lifecycle with intelligent query classification, automatic language detection, 
+                conversation context awareness, vector search, real-time web verification, and comprehensive source attribution.
               </p>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <div className="bg-orange-500/20 rounded-lg p-6 border-l-4 border-orange-400">
                   <div className="flex items-center mb-4">
                     <MessageSquare className="h-6 w-6 text-orange-400 mr-2" />
-                    <h3 className="text-lg font-semibold text-orange-300">1. Input Processing</h3>
+                    <h3 className="text-lg font-semibold text-orange-300">1. Query Classification</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Voice input via local Whisper or text input is processed and converted to searchable query format.
+                    Verdana classifies queries as casual conversation, identity, or EU Green Deal policy queries and detects user language.
                   </p>
                 </div>
 
                 <div className="bg-green-500/20 rounded-lg p-6 border-l-4 border-green-400">
                   <div className="flex items-center mb-4">
                     <Database className="h-6 w-6 text-green-400 mr-2" />
-                    <h3 className="text-lg font-semibold text-green-300">2. RAG Retrieval</h3>
+                    <h3 className="text-lg font-semibold text-green-300">2. Vector Search</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Semantic search through PostgreSQL vector database to find relevant EU policy information.
+                    PostgreSQL pgvector cosine similarity search using OpenAI embeddings to find relevant EU policy content.
                   </p>
                 </div>
 
@@ -142,27 +143,27 @@ export default function ArchitecturePage() {
                     <h3 className="text-lg font-semibold text-blue-300">3. Web Verification</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Real-time verification against current EU sources using Tavily and Firecrawl for accuracy.
+                    Dual web search via Tavily API - EU domain-restricted search plus broader policy research for comprehensive coverage.
                   </p>
                 </div>
 
                 <div className="bg-purple-500/20 rounded-lg p-6 border-l-4 border-purple-400">
                   <div className="flex items-center mb-4">
                     <Brain className="h-6 w-6 text-purple-400 mr-2" />
-                    <h3 className="text-lg font-semibold text-purple-300">4. Response Generation</h3>
+                    <h3 className="text-lg font-semibold text-purple-300">4. Context Integration</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Unified agent synthesizes RAG and web data into comprehensive, source-backed responses.
+                    Verdana integrates conversation history, vector search results, and web verification data for context-aware responses.
                   </p>
                 </div>
 
                 <div className="bg-yellow-500/20 rounded-lg p-6 border-l-4 border-yellow-400">
                   <div className="flex items-center mb-4">
                     <CheckCircle2 className="h-6 w-6 text-yellow-400 mr-2" />
-                    <h3 className="text-lg font-semibold text-yellow-300">5. Delivery</h3>
+                    <h3 className="text-lg font-semibold text-yellow-300">5. Source Attribution</h3>
                   </div>
                   <p className="text-white/70 text-base">
-                    Final response delivered with citations, confidence scores, and EU AI Act compliance markers.
+                    Response delivered with comprehensive source attribution, relevance scores, and deduplicated reference list.
                   </p>
                 </div>
               </div>
@@ -297,9 +298,8 @@ export default function ArchitecturePage() {
                   <ul className="text-white/70 space-y-2">
                     <li className="text-base">• OpenAI GPT-4o-mini</li>
                     <li className="text-base">• OpenAI Whisper speech-to-text</li>
-                    <li className="text-base">• text-embedding-3-small</li>
+                    <li className="text-base">• text-embedding-3-large</li>
                     <li className="text-base">• Tavily search API</li>
-                    <li className="text-base">• Firecrawl scraping service</li>
                   </ul>
                 </div>
                 
@@ -549,23 +549,23 @@ export default function ArchitecturePage() {
               
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center p-6 bg-green-500/20 rounded-lg">
-                  <div className="text-3xl font-bold text-green-400 mb-2">26+</div>
+                  <div className="text-3xl font-bold text-green-400 mb-2">24+</div>
                   <div className="text-white/80">EU Policy Documents</div>
                 </div>
                 
                 <div className="text-center p-6 bg-blue-500/20 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">&lt;2s</div>
-                  <div className="text-white/80">Average Response Time</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2">24</div>
+                  <div className="text-white/80">EU Languages Supported</div>
                 </div>
                 
                 <div className="text-center p-6 bg-purple-500/20 rounded-lg">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">94%+</div>
-                  <div className="text-white/80">Verification Accuracy</div>
+                  <div className="text-3xl font-bold text-purple-400 mb-2">3072</div>
+                  <div className="text-white/80">Vector Dimensions</div>
                 </div>
                 
                 <div className="text-center p-6 bg-yellow-500/20 rounded-lg">
-                  <div className="text-3xl font-bold text-yellow-400 mb-2">100%</div>
-                  <div className="text-white/80">Queries Verified</div>
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">0.3</div>
+                  <div className="text-white/80">Similarity Threshold</div>
                 </div>
               </div>
             </section>

@@ -1,63 +1,88 @@
 # 🌱 EU Green Policies Chatbot
 
-An intelligent unified AI assistant for navigating EU Green Deal compliance, environmental policies, and sustainability requirements. Built with a streamlined unified agent architecture, local Whisper speech processing, and real-time web verification capabilities.
+**🏆 Production-Ready Multilingual AI Assistant for EU Green Deal Compliance** 
+
+An advanced intelligent chatbot specialized in EU environmental regulations and sustainability compliance. Features **Verdana AI Agent**, **OpenAI embeddings with PostgreSQL vector database**, **comprehensive web verification**, and **24+ official EU policy documents**. Built with modern architecture supporting **multiple chat sessions**, **local browser storage**, and **voice accessibility**.
+
+> **🎯 Current Status: Production Ready**  
+> **🌍 Supporting 24 EU Languages | 📚 24+ Official Documents | 🔍 Real-time Web Verification**
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.11+-blue)
 ![Next.js](https://img.shields.io/badge/next.js-14-black)
 ![Docker](https://img.shields.io/badge/docker-supported-blue)
 
-## 🚀 Features
+## 🚀 Core Features
+
+### 🧠 **Verdana AI Agent Architecture**
+- **Intelligent Query Classification**: Automatically distinguishes between casual conversation, identity queries, and EU Green Deal policy questions
+- **Language Detection & Persistence**: Automatically detects user's language from first message and maintains consistency throughout session
+- **Conversation Context Awareness**: Maintains full conversation history and can reference previous queries within sessions
+- **Source Deduplication**: Eliminates duplicate documents and provides unique, high-quality sources
+- **Proactive Information Gathering**: Performs additional web searches when detailed information is requested
+
+### 🔍 **Advanced RAG & Search System**
+- **OpenAI Text-Embedding-3-Large**: 3072-dimensional vectors for precise semantic matching
+- **PostgreSQL with pgvector**: High-performance vector storage and similarity search
+- **Dual Web Verification**: Domain-restricted EU searches + broader policy research via Tavily API
+- **Smart Document Chunking**: 800-token chunks with 300-token overlap for optimal retrieval
+- **Cosine Similarity Threshold**: 0.3 threshold ensuring only relevant documents are retrieved
 
 ### 🏛️ EU AI Act Compliance
-- **Article 50 Transparency**: Clear AI system disclosure before interaction
+- **Article 50 Transparency**: Clear AI system disclosure in 9 EU languages
 - **User Consent Management**: Explicit consent tracking and validation
 - **AI Content Marking**: Machine-readable markers for all AI-generated content
-- **Multilingual Disclosure**: Support for 5 EU languages
-- **User Rights Protection**: Right to information and withdrawal of consent
+- **Multilingual Disclosure**: Full compliance across all supported languages
+- **User Rights Protection**: Complete right to information and withdrawal of consent
 
-### 🧠 Unified AI Agent Architecture
-- **Streamlined Processing**: Single intelligent agent handles complete interaction lifecycle
-- **RAG Integration**: Semantic search through PostgreSQL vector database with 26+ EU policy documents
-- **Web Verification**: Real-time accuracy checking against current EU official sources
-- **Local Whisper Processing**: Server-side speech-to-text for privacy and reliability
-- **Response Synthesis**: Comprehensive answers with source attribution and confidence scoring
+### 🎙️ **Voice & Accessibility Features**
+- **OpenAI Whisper Integration**: High-quality speech-to-text processing with 24+ language support
+- **Real-time Audio Processing**: Converts speech to text with visual feedback and status indicators
+- **Browser-compatible Audio**: Works across Chrome, Firefox, and Edge without additional plugins
+- **Accessibility-First Design**: Voice input supports users with typing difficulties or disabilities
 
-### 📚 Advanced Knowledge Management
-- **PostgreSQL Vector Database**: High-performance semantic search with pgvector extension
-- **Document Processing**: 26+ official EU policy documents processed into searchable chunks
-- **Web Content Ingestion**: Real-time scraping from official EU sources via Tavily and Firecrawl
-- **Semantic Understanding**: Context-aware retrieval using OpenAI embeddings
+### 📚 **Knowledge Base & Document Processing**
+- **24+ Official EU Documents**: Comprehensive coverage from European Commission official sources
+- **Smart Document Processing**: PyPDF2, python-docx, and BeautifulSoup for multi-format support
+- **Automated Embedding Pipeline**: Batch processing with efficient memory management
+- **Source Transparency**: Every response includes detailed source attribution with relevance scores
 
-### 🌐 User Experience
-- **Real-time Chat Interface**: WebSocket-powered conversations
-- **AI-Powered Voice Input**: OpenAI Whisper speech-to-text with multi-language support
-- **Multiple Chat Sessions**: Organize conversations by topic with persistent history
-- **Local Data Storage**: Chat history saved securely in browser (no external servers)
-- **Multilingual Support**: English, Italian, Romanian, German, French
-- **Source Citations**: All responses include proper citations
-- **Confidence Scoring**: Transparency in AI response quality
-- **Mobile Responsive**: Works seamlessly across devices
-- **Accessibility Features**: Voice input for hands-free interaction
+### 🌐 **Enhanced User Experience**
+- **Multiple Chat Sessions**: Create separate conversations for different topics with persistent history
+- **Local Browser Storage**: All chat history saved in browser localStorage (privacy-first approach)
+- **Session Management**: Easy switching between conversations via history menu with session titles
+- **Language Consistency**: Automatic detection and maintenance throughout individual sessions
+- **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
+- **Font Customization**: Adjustable font sizes for accessibility (auto-adjusts for maximized mode)
+- **Conversation Context**: Each session maintains its own history and can reference previous queries
 
-### 🏛️ EU Policy Coverage
-- European Green Deal
-- Carbon Border Adjustment Mechanism (CBAM)
-- Farm to Fork Strategy
-- Circular Economy Action Plan
-- EU Biodiversity Strategy
-- Climate Law and regulations
+### 🔐 **Privacy & Data Management**
+- **GDPR Compliant**: Complete user control over personal conversation data
+- **No External Storage**: Conversations never sent to external storage services
+- **Browser-Only Data**: All chat history remains on user's device until browser cache is cleared
+- **Transparent Data Flow**: Clear information about what data is processed and how
+
+### 🏛️ **EU Policy Coverage (24+ Official Documents)**
+- **Core Strategies**: European Green Deal, REPowerEU Plan, Sustainable Europe Investment Plan
+- **Climate Action**: European Climate Law, Fit for 55 Package, EU Emissions Trading System Reform
+- **Sectoral Policies**: Farm to Fork Strategy, Circular Economy Action Plan, EU Biodiversity Strategy 2030
+- **Energy Transition**: Renewable Energy Directive, Energy Efficiency Directive
+- **Transport & Industry**: CBAM Implementation Guides, FuelEU Maritime, ReFuelEU Aviation
+- **Standards & Regulations**: EU Taxonomy Regulation, CO2 Emission Standards, Effort Sharing Regulation
+- **Support Mechanisms**: Social Climate Fund, Just Transition guidance, Investment frameworks
 
 ## 🏗️ Architecture
 
 ### Backend Stack
-- **FastAPI** (Python 3.11+) for high-performance API endpoints
-- **Unified Chat Agent** for streamlined processing workflow
-- **PostgreSQL** with pgvector for embeddings and vector search
-- **Redis** for caching and session management
-- **OpenAI GPT-4o-mini** for language processing and response generation
-- **OpenAI Whisper** for local speech-to-text transcription
-- **Tavily & Firecrawl** for real-time web research and verification
+- **FastAPI** (Python 3.11+) for high-performance async API endpoints
+- **Verdana Agent** specialized EU Green Deal compliance assistant with intelligent query classification
+- **PostgreSQL with pgvector** for vector storage and similarity search (replacing RAGFlow)
+- **OpenAI GPT-4** for language processing and response generation
+- **OpenAI text-embedding-3-large** for semantic document embeddings (3072 dimensions)
+- **OpenAI Whisper API** for speech-to-text transcription
+- **Tavily API** for real-time web research and verification
+- **asyncpg** for async PostgreSQL operations
+- **httpx** for async HTTP client operations
 
 ### Frontend Stack
 - **Next.js 14** with App Router
@@ -68,10 +93,8 @@ An intelligent unified AI assistant for navigating EU Green Deal compliance, env
 - **Custom Canvas Background** with interactive elements
 
 ### External APIs
-- **Tavily Search API** for web research
-- **Firecrawl** for web content extraction
-- **OpenAI Embeddings** for semantic search
-- **EU Official Data Sources**
+- **OpenAI API** for GPT-4, text-embedding-3-large, and Whisper
+- **Tavily Search API** for web research and verification with EU domain restrictions
 
 ## 🚦 Quick Start
 
@@ -80,8 +103,7 @@ An intelligent unified AI assistant for navigating EU Green Deal compliance, env
 - **Node.js 18+** (for local development)
 - **Python 3.11+** (for local development)
 - **OpenAI API Key**
-- **Tavily API Key** (optional)
-- **Firecrawl API Key** (optional)
+- **Tavily API Key** (optional, for web verification)
 
 ### 1. Clone the Repository
 ```bash
@@ -103,55 +125,48 @@ Required environment variables:
 # OpenAI Configuration (Required)
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Optional APIs for enhanced functionality
+# Optional API for web verification
 TAVILY_API_KEY=your_tavily_api_key_here
-FIRECRAWL_API_KEY=your_firecrawl_api_key_here
 
-# Database Configuration
+# PostgreSQL Configuration
 POSTGRES_DB=eu_green_chatbot
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=your_secure_password
+POSTGRES_PORT=5432
+
+# Document Processing
+CHUNK_SIZE=800
+CHUNK_OVERLAP=300
+VECTOR_DIMENSION=3072
+OPENAI_EMBEDDING_MODEL=text-embedding-3-large
 
 # Application URLs
-BACKEND_URL=http://localhost:8000
-FRONTEND_URL=http://localhost:3000
+BACKEND_PORT=8000
+FRONTEND_PORT=3000
 ```
 
 ### 3. Deploy with Docker
 
-#### Option A: Whisper-Enabled Deployment (Recommended)
 ```bash
-# Deploy with Whisper speech-to-text support (development)
-./scripts/deploy-with-whisper.sh development
-
-# Deploy for production with Whisper
-./scripts/deploy-with-whisper.sh production
-```
-
-#### Option B: Quick Start (Your Preferred Commands)
-```bash
-# Build and start development environment
-docker compose -f docker-compose.dev.yml build
-docker compose -f docker-compose.dev.yml up -d
-
-# For production environment  
+# Build and start entire system (frontend + backend + PostgreSQL + Redis)
 docker compose build
 docker compose up -d
+
+# Check all services are running
+docker compose ps
+
+# Follow logs to monitor startup
+docker compose logs -f
+
+# Check system health
+curl http://localhost:8000/health
 ```
 
-#### Option C: Using Build Scripts (Cleaner Output)
-```bash
-# Development with minimal output
-./quick-build.sh
-
-# Production build
-./quick-build.sh --prod
-
-# Verbose output for debugging
-./quick-build.sh --verbose
-```
-
-> **🎙️ Note**: Option A includes automatic Whisper dependency installation, resource allocation optimization, and proper audio processing configuration for speech-to-text functionality.
+**Services Started:**
+- **Frontend**: http://localhost:3000 (Next.js application)
+- **Backend API**: http://localhost:8000 (FastAPI with Verdana agent)
+- **PostgreSQL**: http://localhost:5432 (Vector database with pgvector)
+- **Redis**: http://localhost:6379 (Session and cache storage)
 
 #### Common Commands
 ```bash
@@ -170,17 +185,19 @@ docker compose build --no-cache [service-name]
 
 ### 4. Access the Application
 
-#### Development Environment (docker-compose.dev.yml)
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/api/docs
-- **pgAdmin**: http://localhost:5050 (admin@example.com / admin123)
-- **Redis Commander**: http://localhost:8081
+#### Application Access
+- **Frontend**: http://localhost:3000 (Main chat interface)
+- **Backend API**: http://localhost:8000 (REST API endpoints)
+- **API Documentation**: http://localhost:8000/docs (Interactive API docs)
+- **Health Check**: http://localhost:8000/health (System status)
 
-#### Production Environment (docker-compose.yml)
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/api/docs
+#### First Time Setup
+1. The database schema will be automatically created on first startup
+2. Upload EU policy documents using the batch upload script:
+   ```bash
+   python scripts/batch_upload_documents.py
+   ```
+3. Start chatting! The Verdana agent will automatically detect your language and maintain session context.
 
 ## 🛠️ Development Setup
 
@@ -227,23 +244,38 @@ docker-compose up postgres -d
 ```
 eu-green-chatbot/
 ├── backend/
-│   ├── agents/              # Unified agent system
-│   │   ├── unified_chat_agent.py  # Main processing agent
-│   │   └── web_research_agent.py  # Web verification support
+│   ├── agents/              # AI agent system
+│   │   └── verdana_agent.py # Main Verdana agent with query classification
 │   ├── api/                 # FastAPI routes
-│   ├── core/                # Configuration and database
-│   ├── services/            # Business logic
-│   ├── sql/                 # Database initialization
+│   │   └── routes/          # API endpoints (chat, health)
+│   ├── core/                # Configuration and logging
+│   ├── services/            # Business logic services
+│   │   ├── rag_service.py   # Vector search and document processing
+│   │   ├── web_service.py   # Tavily web search integration
+│   │   └── stt_service.py   # OpenAI Whisper speech-to-text
+│   ├── sql/                 # Database schema initialization
 │   ├── requirements.txt
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/
-│   │   ├── app/             # Next.js app router
+│   │   ├── app/             # Next.js app router pages
+│   │   │   ├── page.tsx     # Homepage
+│   │   │   ├── policies/    # EU policies page
+│   │   │   ├── about/       # About page
+│   │   │   ├── architecture/ # Technical architecture
+│   │   │   ├── privacy/     # Privacy policy
+│   │   │   ├── terms/       # Terms of service
+│   │   │   └── compliance/  # AI Act compliance
 │   │   ├── components/      # React components
-│   │   └── lib/             # Utilities
+│   │   │   ├── chat/        # Chat interface components
+│   │   │   ├── ui/          # UI components
+│   │   │   └── layout/      # Layout components
+│   │   └── hooks/           # Custom React hooks
 │   ├── package.json
 │   └── Dockerfile
-├── docker-compose.yml
+├── training_docs/           # 24+ official EU policy documents
+├── scripts/                 # Utility scripts
+├── docker-compose.yml       # Multi-service orchestration
 ├── .env.example
 └── README.md
 ```
@@ -256,13 +288,9 @@ eu-green-chatbot/
    - Get from: https://platform.openai.com/api-keys
    - Used for: Language processing, embeddings, agent reasoning
 
-2. **Tavily Search API** (Optional)
+2. **Tavily Search API** (Recommended)
    - Get from: https://tavily.com
-   - Used for: Real-time web search capabilities
-
-3. **Firecrawl API** (Optional)
-   - Get from: https://firecrawl.dev
-   - Used for: Advanced web content extraction
+   - Used for: Real-time web search and verification of EU policy information
 
 ### Environment Variables
 
@@ -270,7 +298,11 @@ All configuration is handled through environment variables. See `.env.example` f
 
 ### Database Configuration
 
-The system uses PostgreSQL with the pgvector extension for storing embeddings and application data. The database schema is automatically created on first run.
+The system uses PostgreSQL with the pgvector extension for storing document embeddings and metadata. Key configuration:
+- **Vector Dimensions**: 3072 (OpenAI text-embedding-3-large)
+- **Similarity Search**: Cosine similarity with 0.3 threshold
+- **Document Chunks**: 800 tokens with 300 token overlap
+- **Auto-initialization**: Database schema created automatically on first startup
 
 ## 📊 Monitoring & Analytics
 
@@ -302,33 +334,47 @@ curl -X POST http://localhost:8000/api/chat/speech-to-text
 ## 🔒 Privacy & Data Management
 
 ### Multiple Chat Sessions
-- **Topic Organization**: Create separate conversations for different EU policy areas
-- **Session Management**: Easy switching between conversations via history menu
-- **Persistent Context**: Each session maintains its own conversation context
+- **Topic Organization**: Create separate conversations for different EU policy areas (e.g., "CBAM Questions", "Circular Economy Research")
+- **Session Management**: Easy switching between conversations via history menu with clear session titles
+- **Persistent Context**: Each session maintains its own conversation context and language preference
+- **Session History**: View and resume previous conversations with full message history
 
-### Local Data Storage
-- **Browser-Only Storage**: All chat history saved in browser localStorage
-- **No External Servers**: Conversations never sent to external storage services
-- **Privacy First**: Your data stays on your device until you clear browser cache
-- **GDPR Compliant**: Complete user control over personal conversation data
+### Local Data Storage & Privacy
+- **Browser-Only Storage**: All chat history saved in browser localStorage on user's device
+- **Zero External Storage**: Conversations never sent to external storage services or third-party analytics
+- **Privacy First**: Your data stays on your device until you clear browser cache or delete sessions
+- **GDPR Compliant**: Complete user control over personal conversation data with clear data retention policies
+- **Language Persistence**: Each session remembers detected language (24 EU languages supported)
 
 ### Data Lifecycle
 ```
-User Conversation → Browser localStorage → Cleared with Browser Cache
-                  ↑
-            No external storage
+User Query → Verdana Agent Processing → Response Generation → Browser localStorage
+     ↓                ↓                      ↓                     ↓
+Language Detection → Vector Search → Web Verification → Local Session Storage
+                 (No conversation data sent to external storage)
 ```
+
+### What Data is Processed
+- **Local Storage**: Chat messages, session metadata, language preferences
+- **Processing Only**: Individual queries sent to OpenAI/Tavily for response generation
+- **Not Stored Externally**: Full conversation history, personal information, session data
 
 ## 🌍 Multilingual Support
 
-The chatbot supports 5 languages:
-- **English** (en) - Primary language
-- **Italian** (it)
-- **Romanian** (ro) 
-- **German** (de)
-- **French** (fr)
+The Verdana agent supports all 24 official EU languages with intelligent language detection and session persistence:
 
-Responses are automatically translated while preserving technical terminology and official EU policy names.
+### Supported Languages
+**Germanic**: English (en), German (de), Dutch (nl), Swedish (sv), Danish (da)
+**Romance**: French (fr), Italian (it), Spanish (es), Portuguese (pt), Romanian (ro)
+**Slavic**: Polish (pl), Czech (cs), Slovak (sk), Bulgarian (bg), Croatian (hr), Slovenian (sl)
+**Baltic**: Lithuanian (lt), Latvian (lv), Estonian (et)
+**Other**: Finnish (fi), Hungarian (hu), Greek (el), Maltese (mt), Irish (ga)
+
+### Language Features
+- **Automatic Detection**: Detects language from your first message with high accuracy
+- **Session Persistence**: Maintains chosen language throughout individual conversations
+- **Technical Preservation**: Preserves official EU policy names and technical terminology
+- **Context Awareness**: Understands multilingual policy context and cross-references
 
 ## 📈 Usage Examples
 
@@ -346,30 +392,34 @@ response = requests.post("http://localhost:8000/api/chat/message", json={
 print(response.json())
 ```
 
-### Document Upload
-```python
-# Upload a document for processing
-files = {"file": open("eu_policy.pdf", "rb")}
-data = {"language": "en"}
-
-response = requests.post(
-    "http://localhost:8000/api/documents/upload", 
-    files=files, 
-    data=data
-)
+### Voice Input (Speech-to-Text)
+```javascript
+// Record audio and convert to text
+const startRecording = async () => {
+    const response = await fetch('/api/chat/speech-to-text', {
+        method: 'POST',
+        body: audioBlob,
+        headers: {'Content-Type': 'audio/wav'}
+    });
+    const result = await response.json();
+    console.log('Transcribed text:', result.text);
+};
 ```
 
-### WebSocket Chat
+### Session Management
 ```javascript
-// Real-time chat with WebSocket
-const ws = new WebSocket('ws://localhost:8000/api/chat/ws/demo-session');
-
-ws.onmessage = (event) => {
-    const response = JSON.parse(event.data);
-    console.log('Bot response:', response.response);
+// Create new chat session
+const newSession = () => {
+    const sessionId = `chat-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    localStorage.setItem('currentSession', sessionId);
+    return sessionId;
 };
 
-ws.send('Tell me about CBAM implementation timeline');
+// Resume existing session
+const resumeSession = (sessionId) => {
+    const history = JSON.parse(localStorage.getItem(`chat-${sessionId}`) || '[]');
+    return history;
+};
 ```
 
 ## 🤝 Contributing
@@ -427,34 +477,15 @@ rm -rf .next
 npm run build
 ```
 
-## 🔮 Roadmap
-
-### Phase 1 (Current)
-- ✅ Unified agent architecture implementation
-- ✅ Local Whisper speech-to-text integration
-- ✅ PostgreSQL vector database with RAG
-- ✅ Web verification and real-time updates
-- ✅ Docker containerized deployment
-
-### Phase 2 (Next)
-- 🔄 Advanced analytics dashboard
-- 🔄 API rate limiting and authentication
-- 🔄 Enhanced document processing
-- 🔄 Mobile app development
-
-### Phase 3 (Future)
-- 📋 Integration with EU official APIs
-- 📋 Advanced compliance checking
-- 📋 Custom policy alerts
-- 📋 White-label solutions
 
 ## 🙏 Acknowledgments
 
-- **European Commission** for open access to policy documents
-- **LangChain Community** for excellent AI tooling
+- **European Commission** for open access to official EU Green Deal policy documents
 - **PostgreSQL & pgvector** for high-performance vector database capabilities
-- **OpenAI** for powerful language models and Whisper speech recognition
-- **Tavily & Firecrawl** for reliable web research and verification
+- **OpenAI** for powerful language models, embeddings, and Whisper speech recognition
+- **Tavily** for reliable web search and verification capabilities
+- **Next.js & Vercel** for excellent frontend development framework
+- **FastAPI** for high-performance Python web framework
 - **All Contributors** who help improve this project
 
 ---

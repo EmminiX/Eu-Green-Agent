@@ -24,6 +24,9 @@ interface Message {
     filename?: string;
     document_name?: string;
     similarity?: number;
+    verified?: boolean;
+    score?: number;
+    source_type?: string;
   }>;
 }
 
@@ -121,15 +124,48 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
     handleDecline
   } = useAIDisclosure(language);
 
-  // Scroll to bottom only when new messages are added, not when updated
+  // Smart scroll behavior: keep user message at top when agent responds
   const prevMessageCountRef = useRef(messages.length);
+  const userMessageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  
   useEffect(() => {
     if (messages.length > prevMessageCountRef.current) {
-      // Only scroll if we have a new message
       const lastMessage = messages[messages.length - 1];
+      
       if (lastMessage?.role === 'user') {
-        // Scroll immediately for user messages
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        // For user messages: scroll to show the new user message at top
+        setTimeout(() => {
+          const userMessageElement = userMessageRefs.current[lastMessage.id];
+          if (userMessageElement) {
+            userMessageElement.scrollIntoView({ 
+              behavior: "smooth", 
+              block: "start" // Align to top of viewport
+            });
+          }
+        }, 100);
+      } else if (lastMessage?.role === 'assistant') {
+        // For assistant messages: find the corresponding user message and keep it at top
+        // Find the most recent user message
+        let userMessageIndex = -1;
+        for (let i = messages.length - 2; i >= 0; i--) {
+          if (messages[i]?.role === 'user') {
+            userMessageIndex = i;
+            break;
+          }
+        }
+        
+        if (userMessageIndex >= 0) {
+          const userMessage = messages[userMessageIndex];
+          setTimeout(() => {
+            const userMessageElement = userMessageRefs.current[userMessage.id];
+            if (userMessageElement) {
+              userMessageElement.scrollIntoView({ 
+                behavior: "smooth", 
+                block: "start" // Keep user message at top
+              });
+            }
+          }, 200);
+        }
       }
       prevMessageCountRef.current = messages.length;
     }
@@ -263,7 +299,7 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
         role: "assistant",
         content: data.response || "I apologize, but I couldn't process your request.",
         timestamp: new Date(),
-        sources: data.sources || [],
+        sources: data.sources?.combined || data.sources || [],
       };
 
       // Add assistant message to local state and persist
@@ -504,38 +540,14 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
         </div>
       </div>
 
-      {/* Messages */}
-      <div 
-        className="flex-1 overflow-y-auto p-4 space-y-4"
-        onWheel={(e) => {
-          // Prevent scroll propagation to parent when scrolling inside chat
-          const element = e.currentTarget;
-          const isScrollable = element.scrollHeight > element.clientHeight;
-          
-          if (isScrollable) {
-            const scrollTop = element.scrollTop;
-            const scrollHeight = element.scrollHeight;
-            const height = element.clientHeight;
-            const delta = e.deltaY;
-            const isAtTop = scrollTop === 0;
-            const isAtBottom = scrollTop + height >= scrollHeight - 1;
-            
-            // Prevent scroll when at boundaries
-            if ((isAtTop && delta < 0) || (isAtBottom && delta > 0)) {
-              e.preventDefault();
-            }
-          }
-          
-          e.stopPropagation();
-        }}>
-        
-        {/* Recording Indicator Banner */}
-        {(isRecording || isProcessing) && (
+      {/* Floating Recording Indicator Banner */}
+      {(isRecording || isProcessing) && (
+        <div className="absolute top-4 left-4 right-4 z-50">
           <div className={cn(
-            "p-3 rounded-lg mb-4 shadow-lg border text-white",
+            "p-3 rounded-lg shadow-xl border text-white backdrop-blur-sm",
             isRecording 
-              ? "bg-gradient-to-r from-red-500 to-red-600 border-red-400"
-              : "bg-gradient-to-r from-blue-500 to-blue-600 border-blue-400"
+              ? "bg-gradient-to-r from-red-500/95 to-red-600/95 border-red-400"
+              : "bg-gradient-to-r from-blue-500/95 to-blue-600/95 border-blue-400"
           )}>
             <div className="flex items-center justify-center space-x-3">
               <div className="flex items-center space-x-2">
@@ -560,7 +572,17 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
               }
             </div>
           </div>
-        )}
+        </div>
+      )}
+
+      {/* Messages */}
+      <div 
+        className="flex-1 overflow-y-auto p-4 space-y-4"
+        onWheel={(e) => {
+          // Prevent scroll propagation with passive-safe approach
+          e.stopPropagation();
+        }}>
+        
         
         {messages.length === 0 ? (
           <div className="text-center text-gray-600 space-y-4">
@@ -618,6 +640,7 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
           messages.map((message) => (
             <div
               key={message.id}
+              ref={message.role === 'user' ? (el) => { userMessageRefs.current[message.id] = el; } : undefined}
               className={cn(
                 "flex",
                 message.role === "user" ? "justify-end" : "justify-start"
@@ -643,7 +666,18 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
                       ul: ({children}) => <ul className="list-disc pl-5 mb-2">{children}</ul>,
                       ol: ({children}) => <ol className="list-decimal pl-5 mb-2">{children}</ol>,
                       li: ({children}) => <li className="mb-1">{children}</li>,
-                      code: ({children}) => <code className={`bg-gray-100 px-1 rounded ${fontSizeClasses.small}`}>{children}</code>
+                      code: ({children}) => <code className={`bg-gray-100 px-1 rounded ${fontSizeClasses.small}`}>{children}</code>,
+                      a: ({href, children, ...props}) => (
+                        <a 
+                          href={href} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-blue-600 hover:underline"
+                          {...props}
+                        >
+                          {children}
+                        </a>
+                      )
                     }}
                   >
                     {message.content}
@@ -655,46 +689,110 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
                       <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                       </svg>
-                      <p className={`${fontSizeClasses.small} font-semibold text-gray-700`}>Sources:</p>
+                      <p className={`${fontSizeClasses.small} font-semibold text-gray-700`}>Sources & Verification:</p>
                     </div>
                     <div className="space-y-2">
-                      {message.sources.map((source, index) => (
-                        <div key={index} className="bg-blue-50 rounded-lg p-2 border border-blue-100">
-                          <div className="flex items-start justify-between">
-                            <div className="flex-1">
-                              {source.url ? (
-                                <a
-                                  href={source.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-700 hover:text-blue-900 font-medium text-xs leading-relaxed hover:underline"
-                                >
-                                  {source.title || source.filename}
-                                </a>
-                              ) : (
-                                <span className="text-gray-800 font-medium text-xs">
-                                  {source.title || source.filename}
-                                </span>
-                              )}
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-xs text-gray-500 bg-white px-2 py-0.5 rounded">
-                                  {source.type}
-                                </span>
-                                {source.similarity && (
-                                  <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded">
-                                    {Math.round(source.similarity * 100)}% match
+                      {message.sources.map((source, index) => {
+                        // Determine source styling based on type
+                        const getSourceStyle = (type: string, verified?: boolean) => {
+                          switch (type) {
+                            case 'knowledge_base':
+                              return verified 
+                                ? "bg-green-50 border-green-200 text-green-800"
+                                : "bg-blue-50 border-blue-200 text-blue-800";
+                            case 'web_verification':
+                              return "bg-emerald-50 border-emerald-200 text-emerald-800";
+                            case 'verification':
+                              return "bg-yellow-50 border-yellow-200 text-yellow-800";
+                            case 'web_search':
+                              return "bg-purple-50 border-purple-200 text-purple-800";
+                            default:
+                              return "bg-gray-50 border-gray-200 text-gray-800";
+                          }
+                        };
+
+                        const getSourceIcon = (type: string, verified?: boolean) => {
+                          switch (type) {
+                            case 'knowledge_base':
+                              return verified ? "✅" : "📚";
+                            case 'web_verification':
+                              return "🔍";
+                            case 'verification':
+                              return "⚡";
+                            case 'web_search':
+                              return "🌐";
+                            default:
+                              return "📄";
+                          }
+                        };
+
+                        // Type-safe access to optional properties
+                        const extendedSource = source as typeof source & { verified?: boolean; score?: number };
+                        const sourceStyle = getSourceStyle(source.type, extendedSource.verified);
+                        const sourceIcon = getSourceIcon(source.type, extendedSource.verified);
+
+                        return (
+                          <div key={index} className={`rounded-lg p-2 border ${sourceStyle}`}>
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-1 mb-1">
+                                  <span className="text-xs">{sourceIcon}</span>
+                                  {source.url ? (
+                                    <a
+                                      href={source.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="font-medium text-xs leading-relaxed hover:underline"
+                                    >
+                                      {source.title || source.filename || source.document_name}
+                                    </a>
+                                  ) : (
+                                    <span className="font-medium text-xs">
+                                      {source.title || source.filename || source.document_name}
+                                    </span>
+                                  )}
+                                </div>
+                                
+                                <div className="flex items-center gap-2 mt-1 flex-wrap">
+                                  <span className="text-xs bg-white/70 px-2 py-0.5 rounded capitalize">
+                                    {source.type.replace('_', ' ')}
                                   </span>
+                                  
+                                  {extendedSource.verified && (
+                                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                                      ✓ Verified
+                                    </span>
+                                  )}
+                                  
+                                  {source.similarity && (
+                                    <span className="text-xs bg-white/70 px-2 py-0.5 rounded">
+                                      {Math.round(source.similarity * 100)}% relevance
+                                    </span>
+                                  )}
+                                  
+                                  {extendedSource.score && (
+                                    <span className="text-xs bg-white/70 px-2 py-0.5 rounded">
+                                      {Math.round(extendedSource.score * 100)}% confidence
+                                    </span>
+                                  )}
+                                </div>
+                                
+                                {source.filename && source.filename !== source.title && (
+                                  <div className="text-xs opacity-70 mt-1">
+                                    File: {source.filename}
+                                  </div>
                                 )}
                               </div>
+                              
+                              {source.url && (
+                                <svg className="w-3 h-3 ml-2 mt-0.5 flex-shrink-0 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              )}
                             </div>
-                            {source.url && (
-                              <svg className="w-3 h-3 text-blue-500 ml-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            )}
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )}

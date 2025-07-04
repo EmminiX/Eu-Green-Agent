@@ -37,25 +37,79 @@ export default function PrivacyPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-white/80 text-lg leading-relaxed mb-4">
-                    We are committed to protecting your privacy and ensuring transparency about our 
-                    data practices. This policy explains how we handle your information when you 
-                    use our EU Green Policies Chatbot.
+                    We are committed to protecting your privacy with a privacy-first architecture. 
+                    Your chat conversations are stored locally in your browser only - we never store 
+                    your conversation history on external servers.
                   </p>
                   <p className="text-white/80 text-lg leading-relaxed">
                     Our practices comply with the EU General Data Protection Regulation (GDPR) and 
-                    other applicable privacy laws.
+                    give you complete control over your personal conversation data.
                   </p>
                 </div>
                 
                 <div className="bg-green-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-green-300 mb-4">Quick Facts</h3>
+                  <h3 className="text-lg font-semibold text-green-300 mb-4">Privacy-First Approach</h3>
                   <ul className="space-y-2 text-white/70 text-base">
-                    <li>• We minimize data collection</li>
-                    <li>• No personal data sold to third parties</li>
-                    <li>• GDPR compliant data handling</li>
-                    <li>• Transparent AI interactions</li>
-                    <li>• User control over data</li>
+                    <li>• Chat history stored locally in your browser only</li>
+                    <li>• Multiple chat sessions for topic organization</li>
+                    <li>• No external servers store your conversations</li>
+                    <li>• GDPR compliant with user data control</li>
+                    <li>• Transparent AI processing with source attribution</li>
+                    <li>• Clear data only when you clear browser cache</li>
                   </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Chat Sessions & Local Storage */}
+            <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <Database className="h-6 w-6 text-green-400 mr-3" />
+                Multiple Chat Sessions & Local Storage
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="bg-green-500/20 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-green-300 mb-3">How Chat Sessions Work</h3>
+                  <ul className="text-white/70 text-base space-y-2">
+                    <li>• <strong>Multiple Sessions:</strong> Create separate conversations for different EU policy topics (e.g., &quot;CBAM Questions&quot;, &quot;Circular Economy Research&quot;)</li>
+                    <li>• <strong>Session History:</strong> Each session maintains its own conversation history and context</li>
+                    <li>• <strong>Language Persistence:</strong> Each session remembers your detected language preference</li>
+                    <li>• <strong>Easy Management:</strong> Switch between sessions via the history menu with clear session titles</li>
+                  </ul>
+                </div>
+
+                <div className="bg-blue-500/20 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-blue-300 mb-3">Local Browser Storage Details</h3>
+                  <ul className="text-white/70 text-base space-y-2">
+                    <li>• <strong>localStorage:</strong> All chat data stored in browser&apos;s localStorage (not cookies)</li>
+                    <li>• <strong>Device-Specific:</strong> Data stays on your device - not synced across devices</li>
+                    <li>• <strong>No External Backup:</strong> We do not backup or store your conversations on our servers</li>
+                    <li>• <strong>User Control:</strong> You can delete individual sessions or clear all data via browser settings</li>
+                  </ul>
+                  <div className="mt-4 p-3 bg-blue-600/20 rounded border border-blue-400/30">
+                    <p className="text-blue-200 text-sm">
+                      <strong>Technical Note:</strong> Your chat data is stored as JSON in localStorage with session IDs. 
+                      Data persists until you clear browser cache, delete sessions manually, or uninstall your browser.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-purple-500/20 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-purple-300 mb-3">What Gets Stored Locally</h3>
+                  <ul className="text-white/70 text-base space-y-2">
+                    <li>• Chat messages (your questions and Verdana&apos;s responses)</li>
+                    <li>• Session metadata (titles, creation dates, last activity)</li>
+                    <li>• Language preferences per session</li>
+                    <li>• AI consent acknowledgment status</li>
+                    <li>• Current session identifier</li>
+                  </ul>
+                  <div className="mt-4 p-3 bg-purple-600/20 rounded border border-purple-400/30">
+                    <p className="text-purple-200 text-sm">
+                      <strong>Privacy Guarantee:</strong> This data never leaves your browser unless you explicitly 
+                      share chat content. We cannot access your stored conversations.
+                    </p>
+                  </div>
                 </div>
               </div>
             </section>

@@ -48,13 +48,14 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="bg-green-500/20 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-green-300 mb-4">What We Provide</h3>
+                  <h3 className="text-xl font-semibold text-green-300 mb-4">What Verdana Provides</h3>
                   <ul className="space-y-3 text-white/80">
-                    <li>• Clear explanations of EU Green Deal policies</li>
-                    <li>• Real-time updates on regulatory changes</li>
-                    <li>• Compliance guidance and deadlines</li>
-                    <li>• Multi-language support for EU citizens</li>
-                    <li>• AI-powered intelligent assistance</li>
+                    <li>• Clear explanations of 24+ official EU policy documents</li>
+                    <li>• Real-time web verification and additional information</li>
+                    <li>• Intelligent query classification and context awareness</li>
+                    <li>• 24 EU languages with automatic detection</li>
+                    <li>• Privacy-first multiple chat sessions</li>
+                    <li>• Voice accessibility with OpenAI Whisper</li>
                   </ul>
                 </div>
               </div>
@@ -69,23 +70,26 @@ export default function AboutPage() {
               
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-blue-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-blue-300 mb-3">Unified AI Agent</h3>
+                  <h3 className="text-lg font-semibold text-blue-300 mb-3">Verdana AI Agent</h3>
                   <p className="text-white/70 text-sm">
-                    Streamlined single agent architecture integrates RAG retrieval, web verification, and local Whisper speech processing for comprehensive policy assistance.
+                    Advanced agent with intelligent query classification, automatic language detection for 24 EU languages, 
+                    conversation context awareness, and proactive web search capabilities.
                   </p>
                 </div>
                 
                 <div className="bg-purple-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Real-time Updates</h3>
+                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Vector Search & RAG</h3>
                   <p className="text-white/70 text-sm">
-                    Connected to official EU sources to provide the latest policy updates and regulatory changes.
+                    OpenAI text-embedding-3-large with PostgreSQL pgvector for semantic similarity search, 
+                    combined with real-time Tavily API web verification.
                   </p>
                 </div>
                 
                 <div className="bg-green-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-green-300 mb-3">EU AI Act Compliant</h3>
+                  <h3 className="text-lg font-semibold text-green-300 mb-3">Privacy & Compliance</h3>
                   <p className="text-white/70 text-sm">
-                    Built with transparency and compliance in mind, following EU AI Act Article 50 requirements.
+                    EU AI Act Article 50 compliant with transparent AI disclosures, local browser storage only, 
+                    and GDPR-compliant data handling practices.
                   </p>
                 </div>
               </div>
@@ -107,9 +111,10 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="bg-green-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-green-300 mb-3">Multi-language Support</h3>
+                  <h3 className="text-lg font-semibold text-green-300 mb-3">24 EU Language Support</h3>
                   <p className="text-white/70 text-sm">
-                    Available in multiple languages with voice recognition support, making EU policy information accessible to diverse communities.
+                    Automatic language detection from first message with session persistence. Supports all 24 official EU languages 
+                    with voice recognition, making EU policy information accessible to all European citizens.
                   </p>
                 </div>
                 
@@ -121,9 +126,10 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="bg-yellow-500/20 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-yellow-300 mb-3">Privacy-Focused Storage</h3>
+                  <h3 className="text-lg font-semibold text-yellow-300 mb-3">Multiple Chat Sessions</h3>
                   <p className="text-white/70 text-sm">
-                    Multiple chat sessions organized by topic with local browser storage only. No external servers store your conversations - data stays private and is cleared only when you clear browser cache.
+                    Create separate conversations for different EU policy topics (e.g., &quot;CBAM Questions&quot;, &quot;Circular Economy&quot;). 
+                    All chat history stored locally in browser with session management and conversation context preservation.
                   </p>
                 </div>
               </div>
@@ -138,23 +144,23 @@ export default function AboutPage() {
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">50+</div>
-                  <div className="text-white/70 text-sm">EU Regulations Covered</div>
+                  <div className="text-3xl font-bold text-green-400 mb-2">24+</div>
+                  <div className="text-white/70 text-sm">Official EU Documents</div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">5</div>
-                  <div className="text-white/70 text-sm">Languages Supported</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2">24</div>
+                  <div className="text-white/70 text-sm">EU Languages Supported</div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">24/7</div>
-                  <div className="text-white/70 text-sm">Availability</div>
+                  <div className="text-3xl font-bold text-purple-400 mb-2">100%</div>
+                  <div className="text-white/70 text-sm">Privacy Protection</div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400 mb-2">2050</div>
-                  <div className="text-white/70 text-sm">Climate Target</div>
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">3072</div>
+                  <div className="text-white/70 text-sm">Vector Dimensions</div>
                 </div>
               </div>
             </section>

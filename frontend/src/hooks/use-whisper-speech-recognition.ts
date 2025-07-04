@@ -62,7 +62,7 @@ export function useWhisperSpeechRecognition(
         filename = 'audio.wav';
       }
 
-      formData.append('audio_file', audioBlob, filename);
+      formData.append('audio', audioBlob, filename);
       formData.append('language', language);
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -78,8 +78,8 @@ export function useWhisperSpeechRecognition(
 
       const result = await response.json();
       
-      if (result.transcript) {
-        setTranscript(result.transcript);
+      if (result.text) {
+        setTranscript(result.text);
         setError(null);
       } else {
         setError('No speech detected. Please try speaking more clearly.');

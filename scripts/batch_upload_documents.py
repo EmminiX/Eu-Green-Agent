@@ -64,10 +64,10 @@ async def batch_upload(documents_folder: str, base_url: str = "http://localhost:
     print(f"📁 Documents folder: {documents_folder}")
     print("-" * 60)
     
-    # Test connection to backend
+    # Test connection to backend using health endpoint
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"{base_url}/") as response:
+            async with session.get(f"{base_url}/api/health/") as response:
                 if response.status != 200:
                     print(f"❌ Backend not accessible at {base_url}")
                     return {"success": 0, "failed": 0, "results": []}

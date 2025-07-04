@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lexend } from "next/font/google";
+import { EventListenerProvider } from "@/components/providers/event-listener-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,7 +56,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${lexend.variable} antialiased font-sans`}
         style={{ fontFamily: 'var(--font-lexend), Inter, system-ui, sans-serif' }}
       >
-        {children}
+        <EventListenerProvider>
+          {children}
+        </EventListenerProvider>
       </body>
     </html>
   );

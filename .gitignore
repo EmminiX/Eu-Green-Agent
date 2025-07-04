@@ -125,3 +125,4 @@ htmlcov/
 
 # pytest cache
 .pytest_cache/
+monitor_venv/
