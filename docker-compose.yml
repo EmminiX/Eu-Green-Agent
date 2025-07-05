@@ -136,7 +136,7 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
-      timeout: 10s
+      timeout: 8s
       retries: 5
       start_period: 60s
 
@@ -167,7 +167,7 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
-      timeout: 10s
+      timeout: 25s
       retries: 5
       start_period: 30s
 

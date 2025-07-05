@@ -268,6 +268,10 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
     setIsLoading(true);
 
     try {
+      // Create AbortController for request timeout (25s for Safari/Brave compatibility)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25 seconds
+
       // Call backend API with current session ID
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
       const response = await fetch(`${apiUrl}/api/chat/message`, {
@@ -286,7 +290,11 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
             version: "1.0"
           } : null
         }),
+        signal: controller.signal,
       });
+
+      // Clear timeout if request completes successfully
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error("Failed to get response");
@@ -310,7 +318,9 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
       // Provide specific error messages based on error type
       let errorContent = "I apologize, but I'm having trouble connecting to the server. Please try again later.";
       
-      if (error instanceof TypeError && error.message.includes('fetch')) {
+      if (error instanceof Error && error.name === 'AbortError') {
+        errorContent = "The request took too long to complete (25s timeout). Please try again with a shorter message or check your connection.";
+      } else if (error instanceof TypeError && error.message.includes('fetch')) {
         errorContent = "Unable to connect to the server. Please check your internet connection and try again.";
       } else if (error instanceof Error && error.message.includes('Failed to get response')) {
         errorContent = "The server is currently unavailable. Please try again in a few moments.";

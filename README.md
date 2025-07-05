@@ -376,11 +376,24 @@ docker compose build --no-cache frontend
 docker compose up -d --force-recreate frontend
 ```
 
+**Timeout Configuration for Safari/Brave:**
+
+Safari and Brave browsers have stricter timeout behaviors. The application includes optimized timeout settings:
+
+```bash
+# Add these to your .env file for optimal Safari/Brave performance
+FRONTEND_TIMEOUT_SECONDS=25
+BACKEND_TIMEOUT_SECONDS=8
+NGINX_PROXY_TIMEOUT_SECONDS=30
+```
+
 **Why this happens:**
 - Next.js bakes environment variables at build time
 - Different browsers handle mixed content differently
-- Safari/Brave: Strict HTTPS enforcement (instantly block HTTP calls)
-- Chrome: More permissive with cross-origin requests
+- Safari/Brave: Strict HTTPS enforcement + aggressive timeouts
+- Chrome: More permissive with cross-origin requests and timeouts
+- AbortController with 25s timeout prevents Safari/Brave hanging
+- Nginx proxy timeouts (30s) provide buffer above frontend timeout (25s)
 
 ### Re-deployment Notes
 
