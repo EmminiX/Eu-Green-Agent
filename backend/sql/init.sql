@@ -52,10 +52,10 @@ CREATE INDEX IF NOT EXISTS idx_document_chunks_metadata ON document_chunks USING
 CREATE INDEX IF NOT EXISTS idx_document_chunks_created_at ON document_chunks(created_at DESC);
 
 -- Vector similarity search index using HNSW (Hierarchical Navigable Small World)
--- This provides fast approximate nearest neighbor search
-CREATE INDEX IF NOT EXISTS idx_document_chunks_embedding_hnsw 
-ON document_chunks USING hnsw (embedding vector_cosine_ops)
-WITH (m = 16, ef_construction = 64);
+-- Note: HNSW is limited to 2000 dimensions, so we skip this for 3072-dim embeddings
+-- CREATE INDEX IF NOT EXISTS idx_document_chunks_embedding_hnsw 
+-- ON document_chunks USING hnsw (embedding vector_cosine_ops)
+-- WITH (m = 16, ef_construction = 64);
 
 -- Additional index for exact search (slower but more accurate)
 CREATE INDEX IF NOT EXISTS idx_document_chunks_embedding_ivfflat 
