@@ -55,23 +55,23 @@ export function Toast({ message, type = 'info', duration = 3000, onClose, show =
 
   return (
     <div className={cn(
-      "fixed top-4 right-4 z-50 max-w-sm w-full",
+      "fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 max-w-sm w-auto sm:w-full",
       "transform transition-all duration-300 ease-in-out",
       isVisible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
     )}>
       <div className={cn(
-        "flex items-center p-3 rounded-lg border shadow-lg",
+        "flex items-center p-3 rounded-lg border shadow-lg min-h-[48px]",
         getBackgroundColor()
       )}>
         {getIcon()}
-        <span className="ml-2 text-sm text-gray-700 flex-1">{message}</span>
+        <span className="ml-2 text-sm sm:text-base text-gray-700 flex-1">{message}</span>
         {onClose && (
           <button
             onClick={() => {
               setIsVisible(false);
               setTimeout(onClose, 300);
             }}
-            className="ml-2 text-gray-400 hover:text-gray-600"
+            className="ml-2 text-gray-400 hover:text-gray-600 min-w-[24px] min-h-[24px] flex items-center justify-center"
           >
             <X className="h-4 w-4" />
           </button>

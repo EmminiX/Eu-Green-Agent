@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-sm border-b border-white/20">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-slate-900/95 backdrop-blur-md border-b border-white/20 shadow-lg">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-white hover:text-green-300 transition-colors flex items-center space-x-2">
@@ -91,7 +91,7 @@ export const Header = () => {
         {/* Mobile menu button */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden text-white hover:text-green-300 transition-colors p-2 relative z-50"
+          className="md:hidden text-white hover:text-green-300 transition-colors p-2 relative z-50 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/10"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? (

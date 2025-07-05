@@ -139,24 +139,24 @@ export const AIDisclosureModal: React.FC<AIDisclosureModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       
       {/* Modal */}
       <div className={cn(
-        "relative w-full max-w-2xl max-h-[90vh] overflow-y-auto",
+        "relative w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-4",
         "bg-white dark:bg-gray-900 rounded-2xl shadow-2xl",
         "border border-gray-200 dark:border-gray-700"
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <Bot className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <Bot className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                 {t.title}
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -175,7 +175,7 @@ export const AIDisclosureModal: React.FC<AIDisclosureModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Main disclosure */}
           <div className="flex items-start space-x-3">
             <AlertCircle className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
@@ -246,10 +246,10 @@ export const AIDisclosureModal: React.FC<AIDisclosureModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col gap-3 p-6 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col gap-3 p-4 sm:p-6 border-t border-gray-200 dark:border-gray-700">
           <Button
             onClick={onAccept}
-            className="w-full bg-green-600 hover:bg-green-700 text-white"
+            className="w-full bg-green-600 hover:bg-green-700 text-white min-h-[48px] text-sm sm:text-base"
           >
             <CheckCircle className="h-4 w-4 mr-2" />
             {t.acceptText}
@@ -257,7 +257,7 @@ export const AIDisclosureModal: React.FC<AIDisclosureModalProps> = ({
           <Button
             onClick={onDecline}
             variant="outline"
-            className="w-full"
+            className="w-full min-h-[48px] text-sm sm:text-base"
           >
             {t.declineText}
           </Button>
