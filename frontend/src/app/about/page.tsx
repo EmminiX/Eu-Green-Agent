@@ -39,7 +39,7 @@ export default function AboutPage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <div className="flex items-center mb-6">
                 <Heart className="h-8 w-8 text-green-400 mr-3" />
-                <h2 className="text-3xl font-bold text-white">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-white">My Mission</h2>
               </div>
               
               <div className="grid md:grid-cols-2 gap-8">
@@ -50,7 +50,7 @@ export default function AboutPage() {
                     compliance requirements and implementation timelines.
                   </p>
                   <p className="text-white/80 text-lg leading-relaxed">
-                    Our mission is to democratize access to EU environmental policy information through intelligent, 
+                    My mission is to democratize access to EU environmental policy information through intelligent, 
                     AI-powered assistance that makes complex regulations understandable and actionable.
                   </p>
                 </div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <h2 className="text-3xl font-bold text-white mb-8 flex items-center">
                 <Globe className="h-8 w-8 text-green-400 mr-3" />
-                Our Impact
+                My Impact
               </h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -183,11 +183,11 @@ export default function AboutPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <p className="text-white/80 mb-4">
-                    This project is open source and built for the community. We believe that access to 
+                    This project is open source and built for the community. I believe that access to 
                     environmental policy information should be free and available to everyone.
                   </p>
                   <p className="text-white/80">
-                    Contributions, feedback, and suggestions are welcome as we work together to 
+                    Contributions, feedback, and suggestions are welcome as I work together to 
                     support Europe&apos;s green transition.
                   </p>
                 </div>

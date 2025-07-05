@@ -43,7 +43,7 @@ export default function TermsPage() {
                   <h3 className="text-lg font-semibold text-amber-300 mb-2">Important Notice</h3>
                   <p className="text-amber-100 text-sm leading-relaxed">
                     Verdana AI agent provides information about EU environmental policies based on 24+ official documents 
-                    with real-time web verification, but should not be considered as legal advice. While our system includes 
+                    with real-time web verification, but should not be considered as legal advice. While my system includes 
                     comprehensive source attribution and confidence scoring, always consult official EU sources and qualified 
                     legal professionals for compliance decisions.
                   </p>
@@ -91,7 +91,7 @@ export default function TermsPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-green-300 mb-4">3. AI System Disclosure</h3>
                   <p className="text-white/80 leading-relaxed">
-                    In compliance with EU AI Act Article 50, we clearly disclose that you are interacting 
+                    In compliance with EU AI Act Article 50, I clearly disclose that you are interacting 
                     with Verdana, our specialized AI agent powered by OpenAI GPT-4, text-embedding-3-large, 
                     PostgreSQL vector database with pgvector extension, and real-time web research via Tavily API. 
                     All responses are AI-generated with intelligent classification, automatic verification, 
@@ -104,7 +104,7 @@ export default function TermsPage() {
                   <p className="text-white/80 leading-relaxed">
                     Verdana is provided for informational purposes only. While our system includes comprehensive 
                     web verification, source attribution with confidence scores, and processing of 24+ official EU documents, 
-                    we make no warranties about the accuracy, completeness, or reliability of AI-generated information. 
+                    I make no warranties about the accuracy, completeness, or reliability of AI-generated information. 
                     Users are responsible for verifying information with official EU sources before making any 
                     business, legal, or compliance decisions.
                   </p>
@@ -113,7 +113,7 @@ export default function TermsPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-green-300 mb-4">5. Data Privacy & Local Storage</h3>
                   <p className="text-white/80 leading-relaxed mb-4">
-                    We are committed to protecting your privacy with a privacy-first architecture. Verdana processes 
+                    I am committed to protecting your privacy with a privacy-first architecture. Verdana processes 
                     queries through third-party services (OpenAI, Tavily) for response generation but implements 
                     comprehensive local data management:
                   </p>
@@ -156,7 +156,7 @@ export default function TermsPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-green-300 mb-4">8. Changes to Terms</h3>
                   <p className="text-white/80 leading-relaxed">
-                    We reserve the right to modify these terms at any time. Changes will be effective 
+                    I reserve the right to modify these terms at any time. Changes will be effective 
                     immediately upon posting. Your continued use of the service after any changes 
                     constitutes acceptance of the new terms.
                   </p>

@@ -611,7 +611,7 @@ const resumeSession = (sessionId) => {
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+I welcome contributions! Please see my [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ### Development Guidelines
 1. Follow PEP 8 for Python code

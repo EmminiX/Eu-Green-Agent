@@ -354,7 +354,7 @@ I'm here to help you navigate the complex landscape of EU environmental policy a
         logger.info("Searching embedded documents...")
         rag_results = await self.rag_service.search_documents(query)
         
-        # Step 2: Determine if we have good document matches
+        # Step 2: Determine if there are good document matches
         has_relevant_docs = (
             len(rag_results) > 0 and 
             any(doc.get('similarity', 0) > 0.3 for doc in rag_results)

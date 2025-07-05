@@ -181,7 +181,7 @@ export function useWhisperSpeechRecognition(
             type: selectedMimeType 
           });
 
-          // Check if we have sufficient audio data (minimum 0.5 seconds worth)
+          // Check if there is sufficient audio data (minimum 0.5 seconds worth)
           if (audioBlob.size < 1000) {
             throw new Error('Recording too short. Please speak for at least 1 second.');
           }

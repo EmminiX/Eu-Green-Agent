@@ -7,7 +7,7 @@ import { generateMetadata } from "@/lib/seo-config";
 
 export const metadata: Metadata = generateMetadata({
   title: "Privacy Policy - Data Protection & GDPR Compliance",
-  description: "Learn how we protect your privacy with local browser storage, GDPR compliance, and transparent data handling practices. Your chat history stays private and secure.",
+  description: "Learn how I protect your privacy with local browser storage, GDPR compliance, and transparent data handling practices. Your chat history stays private and secure.",
   keywords: ["privacy policy", "GDPR compliance", "data protection", "local storage", "chat privacy", "AI privacy", "EU privacy"],
   canonical: "https://verdana.emmi.zone/privacy"
 });
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
               </span>
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Your privacy is important to us. Learn how we collect, use, and protect your information.
+              Your privacy is important to me. Learn how I collect, use, and protect your information.
             </p>
           </div>
 
@@ -45,12 +45,12 @@ export default function PrivacyPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-white/80 text-lg leading-relaxed mb-4">
-                    We are committed to protecting your privacy with a privacy-first architecture. 
-                    Your chat conversations are stored locally in your browser only - we never store 
+                    I am committed to protecting your privacy with a privacy-first architecture. 
+                    Your chat conversations are stored locally in your browser only - I never store 
                     your conversation history on external servers.
                   </p>
                   <p className="text-white/80 text-lg leading-relaxed">
-                    Our practices comply with the EU General Data Protection Regulation (GDPR) and 
+                    My practices comply with the EU General Data Protection Regulation (GDPR) and 
                     give you complete control over your personal conversation data.
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
                   <ul className="text-white/70 text-base space-y-2">
                     <li>• <strong>localStorage:</strong> All chat data stored in browser&apos;s localStorage (not cookies)</li>
                     <li>• <strong>Device-Specific:</strong> Data stays on your device - not synced across devices</li>
-                    <li>• <strong>No External Backup:</strong> We do not backup or store your conversations on our servers</li>
+                    <li>• <strong>No External Backup:</strong> I do not backup or store your conversations on my servers</li>
                     <li>• <strong>User Control:</strong> You can delete individual sessions or clear all data via browser settings</li>
                   </ul>
                   <div className="mt-4 p-3 bg-blue-600/20 rounded border border-blue-400/30">
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <Database className="h-6 w-6 text-blue-400 mr-3" />
-                Information We Collect
+                Information I Collect
               </h2>
               
               <div className="space-y-6">
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
                 <div className="bg-blue-500/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-blue-300 mb-3">Temporary Processing</h3>
                   <p className="text-white/70 text-base mb-3">
-                    During your session, we temporarily process:
+                    During your session, I temporarily process:
                   </p>
                   <ul className="text-white/60 text-base space-y-1 ml-4">
                     <li>• Your questions (processed through our RAG system and OpenAI API)</li>
@@ -173,7 +173,7 @@ export default function PrivacyPage() {
                 <div className="bg-amber-500/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-amber-300 mb-3">Third-Party Services</h3>
                   <p className="text-white/70 text-base mb-3">
-                    We use multiple third-party services for AI processing:
+                    I use multiple third-party services for AI processing:
                   </p>
                   <ul className="text-white/60 text-base space-y-1 ml-4">
                     <li>• <strong>OpenAI API:</strong> For AI response generation</li>
@@ -190,7 +190,7 @@ export default function PrivacyPage() {
             <section className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <Eye className="h-6 w-6 text-green-400 mr-3" />
-                How We Process Your Information
+                How I Process Your Information
               </h2>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -237,7 +237,7 @@ export default function PrivacyPage() {
                   <div className="bg-purple-500/20 rounded-lg p-4">
                     <h4 className="font-semibold text-purple-300 mb-2">Right to Access</h4>
                     <p className="text-white/70 text-base">
-                      Request access to your personal data we hold.
+                      Request access to your personal data I hold.
                     </p>
                   </div>
                   
@@ -314,7 +314,7 @@ export default function PrivacyPage() {
                 <h4 className="font-semibold text-blue-300 mb-2">Third-Party Data Handling</h4>
                 <p className="text-white/70 text-sm">
                   Your messages are processed by OpenAI, Tavily, and Firecrawl according to their respective data usage policies. 
-                  We recommend reviewing each service&apos;s privacy policy for details on their data handling practices.
+                  I recommend reviewing each service&apos;s privacy policy for details on their data handling practices.
                 </p>
               </div>
             </section>
@@ -327,7 +327,7 @@ export default function PrivacyPage() {
               </h2>
               
               <p className="text-white/80 leading-relaxed mb-4">
-                Our services primarily operate within the European Union. Any international data 
+                My services primarily operate within the European Union. Any international data 
                 transfers are conducted with appropriate safeguards in compliance with GDPR requirements.
               </p>
               
