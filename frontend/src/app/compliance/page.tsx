@@ -1,8 +1,16 @@
-"use client";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { CanvasBackground } from "@/components/ui/canvas-background";
 import { Shield, CheckCircle, AlertTriangle, FileText, Users } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = generateMetadata({
+  title: "EU AI Act Compliance - Article 50 Transparency Requirements",
+  description: "Learn how our Verdana AI agent fully complies with EU AI Act Article 50 transparency requirements, including AI disclosure, content marking, and user rights protection across 24 EU languages.",
+  keywords: ["EU AI Act", "AI compliance", "Article 50", "AI transparency", "AI disclosure", "AI regulation", "EU AI law"],
+  canonical: "https://verdana.emmi.zone/compliance"
+});
 
 export default function CompliancePage() {
   return (
@@ -10,7 +18,7 @@ export default function CompliancePage() {
       <CanvasBackground />
       <Header />
       
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-24 md:pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
           <div className="text-center mb-16">

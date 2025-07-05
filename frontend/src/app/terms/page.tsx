@@ -1,8 +1,16 @@
-"use client";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { CanvasBackground } from "@/components/ui/canvas-background";
 import { FileText, AlertTriangle, Shield } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Terms of Service - Usage Guidelines & Legal Information",
+  description: "Read our terms of service for using the EU Green Policies Chatbot with Verdana AI agent. Learn about usage guidelines, limitations, and legal considerations.",
+  keywords: ["terms of service", "usage guidelines", "legal information", "AI terms", "service agreement", "EU chatbot terms"],
+  canonical: "https://verdana.emmi.zone/terms"
+});
 
 export default function TermsPage() {
   return (
@@ -10,7 +18,7 @@ export default function TermsPage() {
       <CanvasBackground />
       <Header />
       
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-24 md:pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
           <div className="text-center mb-16">

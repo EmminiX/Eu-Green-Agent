@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Lexend } from "next/font/google";
 import { EventListenerProvider } from "@/components/providers/event-listener-provider";
+import { generateMetadata, seoConfig, viewport as seoViewport } from "@/lib/seo-config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,10 +21,8 @@ const lexend = Lexend({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "EU Green Policies Chatbot - Navigate Sustainability Compliance",
-  description: "Your intelligent assistant for understanding EU environmental policies, Green Deal compliance, and sustainability requirements. Get expert guidance on CBAM, F2F Strategy, and more.",
-};
+export const metadata: Metadata = generateMetadata();
+export const viewport: Viewport = seoViewport;
 
 export default function RootLayout({
   children,
@@ -31,26 +30,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         {/* Preconnect to Google Fonts for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* Preload critical fonts for performance */}
-        <link 
-          rel="preload" 
-          href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" 
-          as="style"
+        {/* Preload critical fonts for performance - Only in production */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <link 
+              rel="preload" 
+              href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" 
+              as="style"
+            />
+            <link 
+              href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" 
+              rel="stylesheet" 
+            />
+          </>
+        )}
+        
+        {/* App Icons */}
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#22c55e" />
+        <meta name="theme-color" content="#22c55e" />
+        
+        {/* Additional Meta Tags */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        {/* Schema.org Structured Data - Minimal for performance */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": seoConfig.siteUrl,
+              "name": seoConfig.siteName,
+              "description": seoConfig.description
+            })
+          }}
         />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" 
-          rel="stylesheet" 
-        />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" 
-          rel="stylesheet" 
-        />
+        
+        {/* Plausible Analytics - Only in production */}
+        {process.env.NODE_ENV === 'production' && (
+          <script defer data-domain="verdana.emmi.zone" src="https://plausible.emmi.zone/js/script.js"></script>
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lexend.variable} antialiased font-sans`}

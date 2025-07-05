@@ -11,9 +11,9 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onChatOpen }) => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[calc(100vh-6rem)] flex items-start justify-center overflow-hidden pt-12 md:pt-11">
       {/* Background with boxes */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" data-background-boxes>
         <Boxes />
       </div>
 

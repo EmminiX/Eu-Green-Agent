@@ -1,0 +1,46 @@
+# FastAPI and server
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+websockets>=12.0
+
+# Database and Vector Storage
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.23
+alembic>=1.12.1
+redis>=5.0.1
+
+# AI and LLM (including Whisper API for speech-to-text)
+openai>=1.12.0
+
+# Document Processing
+pypdf>=3.0.1
+python-docx>=1.1.0
+python-magic>=0.4.27
+
+# Web Search and Scraping  
+tavily-python>=0.3.3
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+aiohttp>=3.9.1
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+httpx>=0.25.2
+
+# Security and Auth
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+fastapi-users[sqlalchemy]>=12.1.0
+slowapi>=0.1.8
+
+# Monitoring and Logging
+structlog>=25.4.0
+rich>=13.7.0
+
+# Development
+pytest>=7.4.3
+pytest-asyncio>=0.21.1

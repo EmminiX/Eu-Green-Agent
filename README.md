@@ -239,6 +239,152 @@ docker-compose up postgres -d
 # from backend/sql/init.sql
 ```
 
+## 🚀 Production Deployment
+
+### VPS/Server Deployment with Document Embedding
+
+When deploying to a VPS or server, you need to embed the EU policy documents into your vector database. Follow these steps:
+
+#### 1. Initial Server Setup
+```bash
+# Clone repository on your server
+git clone https://github.com/EmminiX/Eu-Green-Agent.git
+cd Eu-Green-Agent
+
+# Copy and configure environment
+cp .env.example .env
+nano .env  # Add your API keys and configure database settings
+```
+
+#### 2. Start Database Services
+```bash
+# Start PostgreSQL with pgvector extension
+docker compose up postgres -d
+
+# Wait for PostgreSQL to be ready
+docker compose logs postgres
+```
+
+#### 3. **IMPORTANT: Document Embedding Process**
+
+**⚠️ Critical Step**: You must embed all EU policy documents when deploying to a new environment:
+
+```bash
+# Install Python dependencies for embedding script
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# Run the document embedding script
+cd ../scripts
+python embed_training_documents.py
+```
+
+**What this script does:**
+- Processes all 24+ PDF documents in `training_docs/` directory
+- Extracts text using PyPDF2
+- Creates 800-token chunks with 300-token overlap
+- Generates 3072-dimensional embeddings using OpenAI text-embedding-3-large
+- Stores vectors in PostgreSQL with pgvector for similarity search
+- **Estimated time**: 15-30 minutes depending on document size and API speed
+- **Cost**: ~$2-5 in OpenAI API usage for embeddings
+
+#### 4. Verify Document Embedding
+```bash
+# Check embedded documents in database
+cd ../backend
+python -c "
+import asyncio
+from scripts.embed_training_documents import DocumentProcessor
+
+async def check_stats():
+    processor = DocumentProcessor()
+    await processor.initialize_database()
+    stats = await processor.get_database_stats()
+    print(f'Documents: {stats[\"documents\"]}')
+    print(f'Chunks: {stats[\"chunks\"]}')
+    await processor.close_database()
+
+asyncio.run(check_stats())
+"
+```
+
+**Expected output:**
+```
+Documents: 24
+Chunks: 800+
+```
+
+#### 5. Deploy Full Application
+```bash
+# Build and start all services
+docker compose build
+docker compose up -d
+
+# Verify all services are running
+docker compose ps
+curl http://your-server-ip:8000/health
+```
+
+#### 6. Environment-Specific Configuration
+
+**For VPS deployment, update these in your `.env`:**
+```env
+# Database URL for production
+DATABASE_URL=postgresql+asyncpg://postgres:your_password@localhost:5432/eu_green_chatbot
+
+# Frontend URLs (replace with your domain)
+NEXT_PUBLIC_API_URL=http://your-domain.com:8000
+NEXT_PUBLIC_WS_URL=ws://your-domain.com:8000
+
+# Production settings
+ENVIRONMENT=production
+DEBUG=false
+```
+
+### Deployment Checklist
+
+- [ ] **API Keys**: OpenAI API key added to `.env`
+- [ ] **Database**: PostgreSQL running with pgvector extension
+- [ ] **Documents**: All 24+ EU documents embedded using `embed_training_documents.py`
+- [ ] **Services**: Frontend, Backend, Database all running
+- [ ] **Health Check**: `/health` endpoint returns 200 OK
+- [ ] **Test Chat**: Verdana agent responds to EU policy queries
+- [ ] **SSL/HTTPS**: Configure reverse proxy (nginx/caddy) for HTTPS
+- [ ] **Firewall**: Configure ports 3000 (frontend) and 8000 (backend)
+
+### Re-deployment Notes
+
+**When deploying to a new server/environment:**
+1. You **MUST** re-embed documents - vectors are environment-specific
+2. The embedding process needs to run once per deployment environment
+3. Document vectors are not portable between different database instances
+4. Budget for OpenAI API costs for initial embedding (~$2-5)
+
+**When updating existing deployment:**
+- If documents haven't changed: No re-embedding needed
+- If new documents added: Run embedding script to add new documents
+- If document content updated: Delete old embeddings and re-embed
+
+### Troubleshooting Deployment
+
+**No responses to EU policy questions:**
+```bash
+# Check if documents are embedded
+curl http://localhost:8000/api/health
+# Should show document count > 0
+```
+
+**Database connection errors:**
+```bash
+# Check PostgreSQL logs
+docker compose logs postgres
+
+# Test database connection
+python -c "import asyncpg; print('Database accessible')"
+```
+
 ## 📁 Project Structure
 
 ```

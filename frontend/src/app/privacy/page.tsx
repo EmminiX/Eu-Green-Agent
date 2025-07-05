@@ -1,8 +1,16 @@
-"use client";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { CanvasBackground } from "@/components/ui/canvas-background";
 import { Shield, Lock, Eye, Database, Users, Globe } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Privacy Policy - Data Protection & GDPR Compliance",
+  description: "Learn how we protect your privacy with local browser storage, GDPR compliance, and transparent data handling practices. Your chat history stays private and secure.",
+  keywords: ["privacy policy", "GDPR compliance", "data protection", "local storage", "chat privacy", "AI privacy", "EU privacy"],
+  canonical: "https://verdana.emmi.zone/privacy"
+});
 
 export default function PrivacyPage() {
   return (
@@ -10,7 +18,7 @@ export default function PrivacyPage() {
       <CanvasBackground />
       <Header />
       
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-24 md:pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
           <div className="text-center mb-16">

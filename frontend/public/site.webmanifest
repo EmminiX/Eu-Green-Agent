@@ -1,0 +1,36 @@
+{
+  "name": "EU Green Policies Chatbot",
+  "short_name": "EU Green Chat",
+  "description": "Your intelligent assistant for understanding EU environmental policies, Green Deal compliance, and sustainability requirements.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#22c55e",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "education", "business"],
+  "icons": [],
+  "shortcuts": [
+    {
+      "name": "Start Chat",
+      "short_name": "Chat",
+      "description": "Start a new conversation with the AI assistant",
+      "url": "/"
+    },
+    {
+      "name": "EU Policies",
+      "short_name": "Policies",
+      "description": "Browse EU environmental policies and regulations",
+      "url": "/policies"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/social-media.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
+}

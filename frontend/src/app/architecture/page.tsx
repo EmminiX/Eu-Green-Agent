@@ -1,8 +1,16 @@
-"use client";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { CanvasBackground } from "@/components/ui/canvas-background";
 import { Database, MessageSquare, Search, Brain, Zap, Shield, GitBranch, CheckCircle2, Activity, Clock } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = generateMetadata({
+  title: "AI Architecture - Verdana Agent Technical Overview",
+  description: "Explore the technical architecture of Verdana AI agent with PostgreSQL vector storage, OpenAI embeddings, and web verification powering the EU Green Policies Chatbot.",
+  keywords: ["AI architecture", "Verdana AI", "PostgreSQL vector", "OpenAI embeddings", "RAG system", "AI chatbot architecture", "vector database"],
+  canonical: "https://verdana.emmi.zone/architecture"
+});
 
 export default function ArchitecturePage() {
   return (
@@ -10,7 +18,7 @@ export default function ArchitecturePage() {
       <CanvasBackground />
       <Header />
       
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-24 md:pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
           <div className="text-center mb-16">

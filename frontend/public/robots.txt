@@ -1,0 +1,37 @@
+# Robots.txt for EU Green Policies Chatbot
+# https://verdana.emmi.zone/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow private/sensitive areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://verdana.emmi.zone/sitemap.xml
+Sitemap: https://verdana.emmi.zone/sitemap-0.xml
+
+# Cache directive
+Cache-control: public, max-age=3600

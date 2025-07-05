@@ -53,7 +53,7 @@ export const ResourcesSection: React.FC = () => {
   return (
     <section id="resources" className="relative py-20 overflow-hidden">
       {/* Background with boxes */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" data-background-boxes>
         <Boxes />
       </div>
       

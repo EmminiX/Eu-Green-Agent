@@ -50,7 +50,7 @@ export default function Home() {
       />
       
       {/* Main Content */}
-      <main className="relative z-10 pt-0">
+      <main className="relative z-10 pt-12 md:pt-11">
         {/* Hero Section */}
         <HeroSection onChatOpen={handleChatOpen} />
         

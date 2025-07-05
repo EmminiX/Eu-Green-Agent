@@ -1,8 +1,16 @@
-"use client";
 import React from "react";
 import { Header } from "@/components/layout/header";
 import { CanvasBackground } from "@/components/ui/canvas-background";
 import { Users, Globe, Zap, Heart, Shield } from "lucide-react";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = generateMetadata({
+  title: "About - Empowering EU Environmental Compliance",
+  description: "Learn about our mission to help businesses and individuals navigate EU environmental policies with AI-powered assistance. Discover the team behind Verdana AI agent.",
+  keywords: ["about us", "mission", "EU environmental compliance", "AI assistance", "Verdana AI", "team", "project overview"],
+  canonical: "https://verdana.emmi.zone/about"
+});
 
 export default function AboutPage() {
   return (
@@ -10,7 +18,7 @@ export default function AboutPage() {
       <CanvasBackground />
       <Header />
       
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-24 md:pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
           <div className="text-center mb-16">
