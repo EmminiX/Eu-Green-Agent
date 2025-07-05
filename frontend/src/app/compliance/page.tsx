@@ -29,7 +29,7 @@ export default function CompliancePage() {
               </span>
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Our Verdana AI agent fully complies with EU AI Act Article 50 transparency requirements, providing clear AI disclosure, content marking, and user rights protection across 24 EU languages
+              My Verdana AI agent fully complies with EU AI Act Article 50 transparency requirements, providing clear AI disclosure, content marking, and user rights protection across 24 EU languages
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function CompliancePage() {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-300">Our Verdana AI Implementation</h3>
+                  <h3 className="text-xl font-semibold text-blue-300">My Verdana AI Implementation</h3>
                   <p className="text-white/80 text-lg leading-relaxed">
                     Verdana proactively implements Article 50 requirements with intelligent query classification, 
                     multilingual disclosure support, and comprehensive transparency measures. Our agent provides 
@@ -332,7 +332,7 @@ export default function CompliancePage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-white/80 text-lg mb-4">
-                    If you have questions about our AI system, compliance practices, or want to 
+                    If you have questions about my AI system, compliance practices, or want to 
                     exercise your rights, please contact us:
                   </p>
                   <ul className="space-y-2 text-white/70 text-base">
@@ -363,7 +363,7 @@ export default function CompliancePage() {
                   <h3 className="text-lg font-semibold text-amber-300 mb-2">Important Notice</h3>
                   <p className="text-amber-100 text-sm leading-relaxed">
                     Verdana AI agent provides information about EU environmental policies based on 24+ official documents 
-                    but should not be considered as legal advice. While our system includes real-time web verification 
+                    but should not be considered as legal advice. While my system includes real-time web verification 
                     and comprehensive source attribution, always consult official EU sources and qualified legal professionals 
                     for compliance decisions. AI-generated responses may contain errors and should be verified with authoritative sources.
                   </p>
