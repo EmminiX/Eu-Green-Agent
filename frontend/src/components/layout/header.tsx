@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] bg-slate-900/95 backdrop-blur-md border-b border-white/20 shadow-lg">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-2 md:px-3 lg:px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-white hover:text-green-300 transition-colors flex items-center space-x-2">
           <Leaf className="h-6 w-6 text-green-400" />
@@ -26,31 +26,37 @@ export const Header = () => {
         </Link>
 
         {/* Navigation - Desktop */}
-        <nav className="hidden md:flex items-center space-x-2">
+        <nav className="hidden md:flex items-center space-x-1 xl:space-x-2">
           <Link 
             href="/#resources" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
+            className="relative px-2 lg:px-3 xl:px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
-            <span className="relative z-10">EU Resources</span>
+            <span className="relative z-10">
+              <span className="hidden lg:inline">EU Resources</span>
+              <span className="lg:hidden">Resources</span>
+            </span>
             <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/policies" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
+            className="relative px-2 lg:px-3 xl:px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">Policies</span>
             <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/compliance" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
+            className="relative px-2 lg:px-3 xl:px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
-            <span className="relative z-10">AI Act Compliance</span>
+            <span className="relative z-10">
+              <span className="hidden lg:inline">AI Act Compliance</span>
+              <span className="lg:hidden">AI Act</span>
+            </span>
             <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/architecture" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
+            className="relative px-2 lg:px-3 xl:px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">Architecture</span>
             <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
@@ -58,7 +64,7 @@ export const Header = () => {
         </nav>
 
         {/* Right side controls - Desktop */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-1 lg:space-x-2 xl:space-x-4">
           {/* Theme switcher */}
           <Docks />
           
@@ -82,8 +88,8 @@ export const Header = () => {
             className="border-white/60 bg-white/10 text-white hover:bg-white/20 hover:border-white/80 hover:text-green-300 backdrop-blur-sm"
           >
             <Link href="https://buymeacoffee.com/emmix" target="_blank" rel="noopener noreferrer">
-              <Coffee className="h-4 w-4 mr-2" />
-              Support
+              <Coffee className="h-4 w-4 lg:mr-2" />
+              <span className="hidden lg:inline">Support</span>
             </Link>
           </Button>
         </div>

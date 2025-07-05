@@ -145,7 +145,7 @@ export const AIDisclosureModal: React.FC<AIDisclosureModalProps> = ({
       
       {/* Modal */}
       <div className={cn(
-        "relative w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-4",
+        "relative w-[95vw] max-w-[90vw] sm:w-[85vw] sm:max-w-lg md:w-[80vw] md:max-w-xl lg:w-full lg:max-w-2xl max-h-[90vh] overflow-y-auto",
         "bg-white dark:bg-gray-900 rounded-2xl shadow-2xl",
         "border border-gray-200 dark:border-gray-700"
       )}>

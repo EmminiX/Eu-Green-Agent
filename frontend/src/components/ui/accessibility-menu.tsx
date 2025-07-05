@@ -51,12 +51,12 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ isOpen, on
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[200]"
         onClick={onClose}
       />
       
       {/* Menu */}
-      <div className="fixed top-20 right-4 z-50 bg-gradient-to-br from-purple-900/95 via-purple-800/95 to-purple-900/95 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20 p-6 w-80 max-w-[90vw]">
+      <div className="fixed top-20 right-4 z-[210] bg-gradient-to-br from-purple-900/95 via-purple-800/95 to-purple-900/95 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20 p-6 w-80 max-w-[90vw]">
         <div className="flex items-center gap-2 mb-6">
           <Eye className="w-5 h-5 text-white" />
           <h3 className="text-lg font-semibold text-white">Accessibility Settings</h3>
