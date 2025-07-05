@@ -353,6 +353,34 @@ DEBUG=false
 - [ ] **Test Chat**: Verdana agent responds to EU policy queries
 - [ ] **SSL/HTTPS**: Configure reverse proxy (nginx/caddy) for HTTPS
 - [ ] **Firewall**: Configure ports 3000 (frontend) and 8000 (backend)
+- [ ] **Browser Compatibility**: Set correct HTTPS URLs for Safari/Brave compatibility
+
+### 🌐 Browser Compatibility (Important for HTTPS Deployments)
+
+**Issue**: Safari and Brave browsers may show "Unable to connect to server" while Chrome works fine.
+
+**Root Cause**: Mixed content violation - HTTPS site trying to make HTTP API calls.
+
+**Solution**: Update your `.env` file with HTTPS URLs for production:
+
+```bash
+# For HTTPS deployments (replace with your domain)
+NEXT_PUBLIC_API_URL=https://your-domain.com
+NEXT_PUBLIC_WS_URL=wss://your-domain.com
+NEXT_PUBLIC_ENVIRONMENT=production
+```
+
+**After changing .env, rebuild the frontend:**
+```bash
+docker compose build --no-cache frontend
+docker compose up -d --force-recreate frontend
+```
+
+**Why this happens:**
+- Next.js bakes environment variables at build time
+- Different browsers handle mixed content differently
+- Safari/Brave: Strict HTTPS enforcement (instantly block HTTP calls)
+- Chrome: More permissive with cross-origin requests
 
 ### Re-deployment Notes
 
