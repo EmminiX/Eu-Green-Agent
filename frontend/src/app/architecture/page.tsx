@@ -77,7 +77,7 @@ export default function ArchitecturePage() {
                 Comprehensive Knowledge Base
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-6">
-                My system contains 24+ official EU policy documents, processed into 800-token chunks with 300-token overlap, 
+                The system contains 24+ official EU policy documents, processed into 800-token chunks with 300-token overlap, 
                 embedded using OpenAI text-embedding-3-large for precise semantic retrieval of relevant policy information.
               </p>
               
@@ -184,7 +184,7 @@ export default function ArchitecturePage() {
                 Unified Chat Agent Architecture
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-8">
-                My streamlined architecture uses a single intelligent agent that combines all necessary capabilities 
+                This streamlined architecture uses a single intelligent agent that combines all necessary capabilities 
                 in one efficient system, eliminating the complexity of multiple agent coordination.
               </p>
               
@@ -205,7 +205,7 @@ export default function ArchitecturePage() {
                   </div>
                   
                   <p className="text-white/80 text-lg mb-6 leading-relaxed">
-                    My unified agent consolidates all AI capabilities into a single, efficient system that handles the complete interaction lifecycle. 
+                    The unified agent consolidates all AI capabilities into a single, efficient system that handles the complete interaction lifecycle. 
                     It processes voice input via local Whisper, performs RAG retrieval, conducts web verification, and generates comprehensive responses 
                     all within one streamlined workflow.
                   </p>
@@ -330,7 +330,7 @@ export default function ArchitecturePage() {
                 Local Whisper Speech Processing
               </h2>
               <p className="text-white/80 text-xl leading-relaxed mb-8">
-                My system uses OpenAI Whisper deployed locally for high-quality, privacy-focused speech-to-text processing. 
+                The system uses OpenAI Whisper deployed locally for high-quality, privacy-focused speech-to-text processing. 
                 Audio is processed server-side ensuring consistent quality and eliminating browser compatibility issues.
               </p>
               
