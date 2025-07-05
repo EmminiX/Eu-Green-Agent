@@ -2,10 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useMobileDetect } from "@/hooks/use-mobile-detect";
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
-  const rows = new Array(150).fill(1);
-  const cols = new Array(100).fill(1);
+  const isMobile = useMobileDetect();
+  
+  // Dramatically reduce grid size on mobile for performance
+  const rows = new Array(isMobile ? 15 : 150).fill(1);
+  const cols = new Array(isMobile ? 10 : 100).fill(1);
   
   // Using direct color values instead of CSS variables
   const colors = [
@@ -42,7 +46,8 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
         >
           {cols.map((_, j) => (
             <motion.div
-              whileHover={{
+              // Disable hover animations on mobile for performance
+              whileHover={isMobile ? {} : {
                 backgroundColor: getRandomColor(),
                 transition: { duration: 0 },
               }}
@@ -52,7 +57,8 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
               key={`col` + j}
               className="w-16 h-8 border-r border-t border-slate-700 relative"
             >
-              {j % 2 === 0 && i % 2 === 0 ? (
+              {/* Remove decorative SVG elements on mobile */}
+              {!isMobile && j % 2 === 0 && i % 2 === 0 ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

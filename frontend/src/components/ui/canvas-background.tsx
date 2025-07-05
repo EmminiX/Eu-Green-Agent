@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { useMobileDetect } from "@/hooks/use-mobile-detect";
 
 interface WaveNode {
   x: number;
@@ -123,6 +124,8 @@ export const CanvasBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | undefined>(undefined);
   const isRunningRef = useRef(false);
+  const isMobile = useMobileDetect();
+  const lastFrameTimeRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -137,8 +140,8 @@ export const CanvasBackground = () => {
     const waveConfig: WaveConfig = {
       debug: true,
       friction: 0.5,
-      trails: 80,
-      size: 50,
+      trails: isMobile ? 20 : 80,
+      size: isMobile ? 20 : 50,
       dampening: 0.025,
       tension: 0.99,
     };
@@ -193,14 +196,22 @@ export const CanvasBackground = () => {
       }
     };
 
-    const render = () => {
+    const render = (currentTime: number = 0) => {
       if (!isRunningRef.current || !ctx) return;
+
+      // Limit frame rate on mobile (30fps vs 60fps)
+      const targetFrameTime = isMobile ? 33 : 16; // 30fps on mobile, 60fps on desktop
+      if (currentTime - lastFrameTimeRef.current < targetFrameTime) {
+        animationRef.current = window.requestAnimationFrame(render);
+        return;
+      }
+      lastFrameTimeRef.current = currentTime;
 
       ctx.globalCompositeOperation = "source-over";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = "lighter";
-      ctx.strokeStyle = `hsla(${Math.round(colorWave.update())},100%,50%,0.025)`;
-      ctx.lineWidth = 10;
+      ctx.strokeStyle = `hsla(${Math.round(colorWave.update())},100%,50%,${isMobile ? 0.015 : 0.025})`;
+      ctx.lineWidth = isMobile ? 8 : 10;
 
       for (const line of lines) {
         line.update(position, waveConfig);

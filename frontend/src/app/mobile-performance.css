@@ -1,0 +1,57 @@
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+
+  body {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Disable complex animations on mobile */
+  .motion-safe\:animate-spin {
+    animation: none !important;
+  }
+
+  /* Optimize transforms for mobile */
+  .transform {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Reduce motion for performance */
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      animation-duration: 0.15s !important;
+      transition-duration: 0.15s !important;
+    }
+  }
+
+  /* GPU acceleration hints */
+  .gpu-accelerate {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Lexend } from "next/font/google";
 import { EventListenerProvider } from "@/components/providers/event-listener-provider";
 import { generateMetadata, seoConfig, viewport as seoViewport } from "@/lib/seo-config";
 import "./globals.css";
+import "./mobile-performance.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

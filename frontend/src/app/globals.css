@@ -1,6 +1,28 @@
 /* All @import statements must come first */
 @import "tailwindcss";
 
+/* Mobile Performance Optimizations - must come early */
+@media (max-width: 768px) {
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      animation-duration: 0.2s !important;
+      transition-duration: 0.15s !important;
+    }
+  }
+}
+
 /* Font imports - moved to head section in layout.tsx instead of here to avoid CSS import order issues */
 
 /* Prevent font loading flashes and layout shifts */

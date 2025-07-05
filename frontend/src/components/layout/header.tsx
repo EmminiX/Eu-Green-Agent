@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-sm border-b border-white/20">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-white hover:text-green-300 transition-colors flex items-center space-x-2">
@@ -29,31 +29,31 @@ export const Header = () => {
         <nav className="hidden md:flex items-center space-x-2">
           <Link 
             href="/#resources" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-300 group"
+            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">EU Resources</span>
-            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/policies" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-300 group"
+            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">Policies</span>
-            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/compliance" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-300 group"
+            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">AI Act Compliance</span>
-            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
           <Link 
             href="/architecture" 
-            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-300 group"
+            className="relative px-4 py-2 text-white/90 font-medium rounded-lg hover:text-green-300 hover:bg-white/10 transition-all duration-150 group"
           >
             <span className="relative z-10">Architecture</span>
-            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150 origin-left"></span>
           </Link>
         </nav>
 
@@ -103,59 +103,59 @@ export const Header = () => {
       </div>
 
       {/* Mobile Navigation Menu - Dropdown Style */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${
+      <div className={`md:hidden transition-all duration-150 ease-in-out ${
         isMobileMenuOpen 
           ? 'max-h-screen opacity-100' 
           : 'max-h-0 opacity-0'
-      } overflow-hidden bg-slate-900/95 backdrop-blur-md border-t border-white/20`}>
+      } overflow-hidden bg-slate-900/95 backdrop-blur-sm border-t border-white/20`}>
         <div className="container mx-auto px-4 py-6 space-y-3">
           {/* Mobile Navigation Links */}
           <Link 
             href="/#resources" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             🌍 EU Resources
           </Link>
           <Link 
             href="/policies" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             📋 Policies
           </Link>
           <Link 
             href="/compliance" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             🛡️ AI Act Compliance
           </Link>
           <Link 
             href="/architecture" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             🏗️ Architecture
           </Link>
           <Link 
             href="/privacy" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             🔒 Privacy
           </Link>
           <Link 
             href="/terms" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             📄 Terms
           </Link>
           <Link 
             href="/about" 
             onClick={closeMobileMenu}
-            className="block px-6 py-4 text-white font-medium text-lg rounded-xl hover:text-green-300 hover:bg-white/10 transition-all duration-300 border border-white/10"
+            className="block px-6 py-4 text-white font-medium text-lg rounded-xl active:text-green-300 active:bg-white/10 transition-all duration-150 border border-white/10"
           >
             ℹ️ About
           </Link>
