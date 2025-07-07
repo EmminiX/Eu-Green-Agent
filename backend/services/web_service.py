@@ -16,6 +16,7 @@ class WebService:
         self.api_key = settings.TAVILY_API_KEY
         self.base_url = "https://api.tavily.com/search"
         self.max_results = settings.TAVILY_MAX_RESULTS
+        self.timeout = 15.0  # 15 second timeout for web searches
         
         # HTTP client settings - we create fresh clients per request to avoid reuse issues
     
@@ -56,7 +57,7 @@ class WebService:
             logger.info(f"Searching web for verification: {enhanced_query[:100]}...")
             
             # Use a fresh client for each request to avoid "client closed" errors
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.post(self.base_url, json=payload)
                 response.raise_for_status()
                 
@@ -125,7 +126,7 @@ class WebService:
             logger.info(f"Searching for broader EU policy info: {broad_query[:100]}...")
             
             # Use a fresh client for each request to avoid "client closed" errors  
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.post(self.base_url, json=payload)
                 response.raise_for_status()
                 
@@ -190,7 +191,7 @@ class WebService:
             logger.info(f"Checking policy updates for: {policy_name}")
             
             # Use a fresh client for each request to avoid "client closed" errors
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.post(self.base_url, json=payload)
                 response.raise_for_status()
                 
@@ -232,7 +233,7 @@ class WebService:
             }
             
             # Use a fresh client for each request to avoid "client closed" errors
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.post(self.base_url, json=test_payload)
                 return response.status_code == 200
                 

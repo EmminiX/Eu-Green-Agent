@@ -25,9 +25,9 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 300
     
     # OpenAI Configuration
-    OPENAI_MODEL: str = "gpt-4"
-    OPENAI_TEMPERATURE: float = 0.7
-    OPENAI_MAX_TOKENS: int = 1000
+    OPENAI_MODEL: str = "gpt-4o-mini"  # Latest model with 1M token context window
+    OPENAI_TEMPERATURE: float = 0.3   # Lower temperature for faster, more focused responses
+    OPENAI_MAX_TOKENS: int = 1000     # Can be higher with gpt-4o-mini's efficiency
     
     # OpenAI Embeddings Configuration
     OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-large"

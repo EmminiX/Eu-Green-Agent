@@ -397,16 +397,16 @@ I'm here to help you navigate the complex landscape of EU environmental policy a
         # Build conversation context
         conversation_context = self._build_conversation_context(session_id) if session_id else ""
         
-        # Build context from top RAG results
+        # Build context from top RAG results (optimized for performance)
         doc_context = "\n\n".join([
-            f"Document: {doc['title']}\nContent: {doc['content'][:800]}..."
-            for doc in rag_results[:3]
+            f"Document: {doc['title']}\nContent: {doc['content'][:600]}..."
+            for doc in rag_results[:2]  # Reduced from 3 to 2 documents
         ])
         
         # Build verification context from web results (excluding web summary)
         web_context = "\n\n".join([
-            f"Source: {result['title']}\nContent: {result['content'][:400]}..."
-            for result in web_results[:3] 
+            f"Source: {result['title']}\nContent: {result['content'][:300]}..."
+            for result in web_results[:2]  # Reduced from 3 to 2 sources
             if result.get('title') != 'Web Search Summary'
         ])
         

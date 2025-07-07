@@ -268,9 +268,9 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
     setIsLoading(true);
 
     try {
-      // Create AbortController for request timeout (25s for Safari/Brave compatibility)
+      // Create AbortController for request timeout (35s for Safari/Brave compatibility)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25 seconds
+      const timeoutId = setTimeout(() => controller.abort(), 35000); // 35 second timeout for complex RAG queries (Safari/Brave compatibility)
 
       // Call backend API with current session ID
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -416,7 +416,7 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
   return (
     <div className={cn(
       isMaximized 
-        ? "fixed inset-4 z-50" 
+        ? "fixed top-30 left-4 right-4 bottom-4 z-50" 
         : "fixed bottom-6 right-6 z-50 w-96 h-[500px]",
       "bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl",
       "border border-white/20 flex flex-col",
