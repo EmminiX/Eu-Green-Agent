@@ -1,4 +1,11 @@
 /* Mobile Performance Optimizations */
+@media (max-width: 700px), (max-height: 896px) {
+  .background-boxes,
+  .boxes-core {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   * {
     animation-duration: 0.2s !important;

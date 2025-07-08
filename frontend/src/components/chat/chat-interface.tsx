@@ -9,6 +9,7 @@ import { useChatPersistence } from "@/hooks/use-chat-persistence";
 import { useToast } from "@/hooks/use-toast";
 import { Toast } from "@/components/ui/toast";
 import { useWhisperSpeechRecognition } from "@/hooks/use-whisper-speech-recognition";
+import { useMobileDetect } from "@/hooks/use-mobile-detect";
 import ReactMarkdown from 'react-markdown';
 import { ShiningText } from "@/components/ui/shining-text";
 
@@ -43,6 +44,7 @@ export interface ChatInterfaceRef {
 export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfaceProps>(({ className, language = "en", initialMaximized = false }, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(initialMaximized);
+  const isMobile = useMobileDetect();
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [fontSize, setFontSize] = useState<'small' | 'medium' | 'large'>('medium');
@@ -382,7 +384,7 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
     return (
       <>
         <Button
-          onClick={() => handleChatOpen(false)}
+          onClick={() => handleChatOpen(isMobile ? true : false)}
           disabled={disclosureLoading}
           className={cn(
             "fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-2xl",
@@ -415,7 +417,7 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
 
   return (
     <div className={cn(
-      isMaximized 
+      (isMaximized || isMobile)
         ? "fixed top-30 left-4 right-4 bottom-4 z-50" 
         : "fixed bottom-6 right-6 z-50 w-96 h-[500px]",
       "bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl",
@@ -528,15 +530,17 @@ export const ChatInterface = React.forwardRef<ChatInterfaceRef, ChatInterfacePro
             )}
             </div>
             
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMaximized(!isMaximized)}
-              className="text-white hover:bg-white/20 h-8 w-8 p-0"
-              title={isMaximized ? "Minimize" : "Maximize"}
-            >
-              {isMaximized ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-            </Button>
+            {!isMobile && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMaximized(!isMaximized)}
+                className="text-white hover:bg-white/20 h-8 w-8 p-0"
+                title={isMaximized ? "Minimize" : "Maximize"}
+              >
+                {isMaximized ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="sm"

@@ -54,8 +54,12 @@ export const ComplianceBanner: React.FC<ComplianceBannerProps> = ({
     setIsAnimating(true);
     setTimeout(() => {
       setIsVisible(false);
-      // Store dismissal in localStorage
-      localStorage.setItem('eu-ai-act-banner-dismissed', 'true');
+      // Store dismissal in localStorage with defensive error handling
+      try {
+        localStorage.setItem('eu-ai-act-banner-dismissed', 'true');
+      } catch {
+        // Fallback: just hide the banner if localStorage fails
+      }
     }, 300);
   };
 
@@ -70,11 +74,16 @@ export const ComplianceBanner: React.FC<ComplianceBannerProps> = ({
     }
   };
 
-  // Check if banner was previously dismissed
+  // Check if banner was previously dismissed with defensive error handling
   React.useEffect(() => {
-    const dismissed = localStorage.getItem('eu-ai-act-banner-dismissed');
-    if (dismissed === 'true') {
-      setIsVisible(false);
+    try {
+      const dismissed = localStorage.getItem('eu-ai-act-banner-dismissed');
+      if (dismissed === 'true') {
+        setIsVisible(false);
+      }
+    } catch {
+      // Fallback: show banner if localStorage fails
+      setIsVisible(true);
     }
   }, []);
 
@@ -89,7 +98,8 @@ export const ComplianceBanner: React.FC<ComplianceBannerProps> = ({
       <div className="max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-lg rounded-lg border border-white/20 backdrop-blur-sm">
           <div className="px-4 py-3 sm:px-6 sm:py-4">
-            <div className="flex items-center justify-between">
+            {/* Desktop - horizontal layout */}
+            <div className="hidden sm:flex items-center justify-between">
               <div className="flex items-center space-x-3 flex-1">
                 <div className="flex-shrink-0">
                   <Shield className="h-6 w-6 text-white" />
@@ -129,6 +139,51 @@ export const ComplianceBanner: React.FC<ComplianceBannerProps> = ({
                   className="text-white hover:bg-white/10 p-1 h-auto"
                 >
                   <X className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile - vertical stacking */}
+            <div className="flex flex-col gap-4 sm:hidden">
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 mt-0.5">
+                  <Shield className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium mb-1">
+                    {t.title}
+                  </p>
+                  <p className="text-xs text-white/90 leading-relaxed">
+                    {t.description}
+                  </p>
+                </div>
+                <Button
+                  onClick={handleDismiss}
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/10 p-1.5 h-auto flex-shrink-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              
+              <div className="flex gap-3">
+                <Button
+                  onClick={handleLearnMore}
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/10 text-xs px-4 py-2 h-auto flex-1 min-h-[40px]"
+                >
+                  <ExternalLink className="h-3 w-3 mr-2" />
+                  {t.learnMore}
+                </Button>
+                <Button
+                  onClick={handleDismiss}
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/10 text-xs px-4 py-2 h-auto flex-1 min-h-[40px]"
+                >
+                  {t.dismiss}
                 </Button>
               </div>
             </div>
