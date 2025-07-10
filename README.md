@@ -107,8 +107,8 @@ An advanced intelligent chatbot specialized in EU environmental regulations and 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/eu-green-chatbot.git
-cd eu-green-chatbot
+git clone https://github.com/EmminiX/EU-Green_policies_chatbot.git
+cd EU-Green_policies_chatbot
 ```
 
 ### 2. Environment Setup
@@ -123,10 +123,16 @@ nano .env
 Required environment variables:
 ```env
 # OpenAI Configuration (Required)
-OPENAI_API_KEY=your_openai_api_key_here
+# Get your API key from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=sk-proj-your_openai_api_key_here
 
-# Optional API for web verification
-TAVILY_API_KEY=your_tavily_api_key_here
+# Web search and verification (Recommended)
+# Get your API key from: https://app.tavily.com/sign-up
+TAVILY_API_KEY=tvly-your_tavily_api_key_here
+
+# Optional: Additional AI providers
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+FIRECRAWL_API_KEY=your_firecrawl_api_key_here
 
 # PostgreSQL Configuration
 POSTGRES_DB=eu_green_chatbot
@@ -248,8 +254,8 @@ When deploying to a VPS or server, you need to embed the EU policy documents int
 #### 1. Initial Server Setup
 ```bash
 # Clone repository on your server
-git clone https://github.com/EmminiX/Eu-Green-Agent.git
-cd Eu-Green-Agent
+git clone https://github.com/EmminiX/EU-Green_policies_chatbot.git
+cd EU-Green_policies_chatbot
 
 # Copy and configure environment
 cp .env.example .env
@@ -509,13 +515,16 @@ The system uses PostgreSQL with the pgvector extension for storing document embe
 ### Health Checks
 ```bash
 # Check system health
-curl http://localhost:8000/api/health
+curl http://localhost:8000/health/
 
-# Detailed health check
-curl http://localhost:8000/api/health/detailed
+# Test chat API endpoint
+curl -X POST "http://localhost:8000/api/chat/message" \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What is the EU Green Deal?", "session_id": "test", "language": "en", "ai_consent": {"accepted": true}}'
 
 # Test Whisper speech-to-text endpoint
-curl -X POST http://localhost:8000/api/chat/speech-to-text
+curl -X POST http://localhost:8000/api/chat/speech-to-text \
+  -F "audio=@your_audio_file.wav"
 ```
 
 ## 🔒 Privacy & Data Management
@@ -679,6 +688,6 @@ npm run build
 
 **Built with ❤️ for a sustainable future**
 
-For more information, visit our [GitHub repository](https://github.com/your-username/eu-green-chatbot) or check out the [live demo](https://your-demo-url.com).
+For more information, visit our [GitHub repository](https://github.com/EmminiX/EU-Green_policies_chatbot).
 
 **Support this project**: [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-☕-orange)](https://buymeacoffee.com/emmix)
