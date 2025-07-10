@@ -102,8 +102,8 @@ An advanced intelligent chatbot specialized in EU environmental regulations and 
 - **Docker & Docker Compose**
 - **Node.js 18+** (for local development)
 - **Python 3.11+** (for local development)
-- **OpenAI API Key**
-- **Tavily API Key** (optional, for web verification)
+- **OpenAI API Key** (required)
+- **Tavily API Key** (required for web verification)
 
 ### 1. Clone the Repository
 ```bash
@@ -126,13 +126,9 @@ Required environment variables:
 # Get your API key from: https://platform.openai.com/api-keys
 OPENAI_API_KEY=sk-proj-your_openai_api_key_here
 
-# Web search and verification (Recommended)
+# Web search and verification (Required)
 # Get your API key from: https://app.tavily.com/sign-up
 TAVILY_API_KEY=tvly-your_tavily_api_key_here
-
-# Optional: Additional AI providers
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-FIRECRAWL_API_KEY=your_firecrawl_api_key_here
 
 # PostgreSQL Configuration
 POSTGRES_DB=eu_green_chatbot
@@ -479,10 +475,10 @@ eu-green-chatbot/
 
 1. **OpenAI API Key** (Required)
    - Get from: https://platform.openai.com/api-keys
-   - Used for: Language processing, embeddings, agent reasoning
+   - Used for: Language processing, embeddings, speech-to-text, and agent reasoning
 
-2. **Tavily Search API** (Recommended)
-   - Get from: https://tavily.com
+2. **Tavily Search API** (Required)
+   - Get from: https://app.tavily.com/sign-up
    - Used for: Real-time web search and verification of EU policy information
 
 ### Environment Variables
